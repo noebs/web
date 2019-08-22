@@ -1,0 +1,46 @@
+<div class="row">
+    <div class="col-md-12">
+        <div class="card">
+            <div class="card-header">
+                <div class="card-body">
+                    <form [formGroup]="balanceInquiryForm" (ngSubmit)="onSubmit()">
+                        <div class="form-row">
+                           
+                            <div class="form-group col-12">
+                                <label>Card Number</label>
+                                <input type="text" formControlName="firstName" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.firstName.errors }" />
+                                <div *ngIf="submitted && f.firstName.errors" class="invalid-feedback">
+                                    <div *ngIf="f.firstName.errors.required">Card Number is required</div>
+                                </div>
+                            </div>
+                            <div class="form-group col-12">
+                                <label>Expiry Date</label>
+                                <input type="date" formControlName="lastName" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.lastName.errors }" />
+                                <div *ngIf="submitted && f.lastName.errors" class="invalid-feedback">
+                                    <div *ngIf="f.lastName.errors.required">Last Name is required</div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="form-row">
+                            <div class="form-group col-12">
+                                <label>IPIN</label>
+                                <input type="password" formControlName="password" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.password.errors }" />
+                                <div *ngIf="submitted && f.password.errors" class="invalid-feedback">
+                                    <div *ngIf="f.password.errors.required">IPIN is required</div>
+                                    <div *ngIf="f.password.errors.minlength">IPIN must be at least 4 characters</div>
+                                </div>
+                            </div>
+                           
+                        </div>
+                        
+                        <div class="text-center">
+                            <button class="btn btn-primary mr-1">Register</button>
+                            <button class="btn btn-secondary" type="reset" (click)="onReset()">Cancel</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
