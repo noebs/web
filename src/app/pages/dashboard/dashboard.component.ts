@@ -7,6 +7,7 @@ import { zoomIn } from 'ng-animate';
   selector: 'dashboard-cmp',
   moduleId: module.id,
   templateUrl: 'dashboard.component.html',
+   styleUrls: ['dashboard.component.css'] ,
   animations: [
     trigger('zoomIn', [transition('* => *', useAnimation(zoomIn, {
       params: { timing: 2, delay: 0 }
@@ -19,5 +20,6 @@ export class DashboardComponent implements OnInit {
 
 
   ngOnInit() {
+     
   }
 }

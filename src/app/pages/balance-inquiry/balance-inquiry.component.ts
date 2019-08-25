@@ -15,11 +15,10 @@ export class BalanceInquiryComponent implements OnInit {
 
   ngOnInit() {
   this.balanceInquiryForm = this.formBuilder.group({
-    title: ['', Validators.required],
-   firstName: ['', Validators.required],
-   lastName: ['', Validators.required],
-   email: ['', [Validators.required, Validators.email]],
-   password: ['', [Validators.required, Validators.minLength(4)]],
+    
+   cardNumber: ['', Validators.required],
+   expDate: ['', Validators.required],
+   IPIN: ['', [Validators.required, Validators.minLength(4)]],
            
   });
   }
@@ -31,11 +30,14 @@ export class BalanceInquiryComponent implements OnInit {
     this.submitted = true;
 
     // stop here if form is invalid
-    if (this.balanceInquiryForm.invalid) {
-        return;
+    if (this.balanceInquiryForm.valid) {
+     console.log(this.balanceInquiryForm);
+      alert('SUCCESS!! :-)\n\n' + JSON.stringify(this.balanceInquiryForm.value, null, 4));
+
     }
 
+  
     // display form values on success
-    alert('SUCCESS!! :-)\n\n' + JSON.stringify(this.balanceInquiryForm.value, null, 4));
+   
 }
 }
