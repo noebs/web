@@ -1,1 +1,64 @@
-<p>login works!</p>
+
+    <div class="wrapper">
+            <div class="main-panel">
+             <div class="content">
+
+
+    <div class="row">
+        
+        <div class="col-md-6 offset-3">
+
+            <div class="card">
+                <div class="card-header">
+                    <div class="text-center">
+                        <img src="/assets/img/soluslogin.png" alt="Solus Pay">
+                    </div>
+                </div>
+                <div class="card-body">
+                    <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+                        <div class="form-row">
+
+
+                            <div class="form-group col-8 offset-2">
+                                <label >Email</label>
+                                
+                                    <input type="text" formControlName="email" class="form-control" [ngClass]="{ 'is-invalid': loginForm.get('email').errors && (loginForm.get('email').touched
+                                || loginForm.get('email').dirty) }" />
+                                    <div *ngIf="loginForm.get('email').errors" class="invalid-feedback">
+                                        <div *ngIf="loginForm.get('email').errors.required"> email required</div>
+                                        <div *ngIf="loginForm.get('email').errors.email"> not an email format</div>
+
+                            
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-row">
+                            <div class="form-group col-8 offset-2">
+                                <label >Password</label>
+                                    <input type="password" formControlName="password" class="form-control" [ngClass]="{ 'is-invalid': loginForm.get('password').errors && (loginForm.get('password').touched
+                                || loginForm.get('password').dirty)}" />
+                                    <div *ngIf="loginForm.get('password').errors" class="invalid-feedback">
+                                        <div *ngIf="loginForm.get('password').errors.required">password is required
+                                        </div>
+
+                                    </div>
+                                
+                            </div>
+                        </div>
+
+                        <div class="text-center">
+                            <button class="btn btn-primary mr-1">Login</button>
+                        </div>
+                        <div class="text-center">
+                                Don't have an account? <a href="#">Create One</a>
+                            </div>
+                    </form>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
+</div>
+</div>

@@ -1,5 +1,14 @@
 <div class="row">
     <div class="col-md-12">
+
+            <nav aria-label="breadcrumb" role="navigation">
+                    <ol class="breadcrumb">
+                      <li class="breadcrumb-item"><a [routerLink]="['/dashboard/basic-servces']">BasicServices</a></li>
+                      <li class="breadcrumb-item active" aria-current="page">BalanceInquiry</li>
+                    </ol>
+                  </nav>
+    </div>
+    <div class="col-md-12">
         <div class="card">
             <div class="card-header">
                 <div class="card-body">
@@ -13,11 +22,13 @@
                                  || balanceInquiryForm.get('cardNumber').dirty)}"  />
                                 <div *ngIf="balanceInquiryForm.get('cardNumber').errors" class="invalid-feedback">
                                     <div *ngIf="balanceInquiryForm.get('cardNumber').errors.required">Card Number is required</div>
+                                    <div *ngIf="balanceInquiryForm.get('cardNumber').errors.minlength ||  balanceInquiryForm.get('cardNumber').errors.maxlength">card number must be  16 or 19 characters</div>
                                 </div>
                             </div>
                             <div class="form-group col-12">
                                 <label>Expiry Date</label>
-                                <input type="date" formControlName="expDate" class="form-control" [ngClass]="{ 'is-invalid': balanceInquiryForm.get('expDate').errors && (balanceInquiryForm.get('expDate').touched
+                                <input type="text"  bsDatepicker   [bsConfig]="{dateInputFormat: 'YYMM' , minMode: 'month'}"
+                                  #dp="bsDatepicker" formControlName="expDate" class="form-control" [ngClass]="{ 'is-invalid': balanceInquiryForm.get('expDate').errors && (balanceInquiryForm.get('expDate').touched
                                 || balanceInquiryForm.get('expDate').dirty) }" />
                                 <div *ngIf="balanceInquiryForm.get('expDate').errors" class="invalid-feedback">
                                     <div *ngIf="balanceInquiryForm.get('expDate').errors.required"> Expiry date is required</div>
@@ -32,7 +43,9 @@
                                 || balanceInquiryForm.get('IPIN').dirty)}" />
                                 <div *ngIf="balanceInquiryForm.get('IPIN').errors" class="invalid-feedback">
                                     <div *ngIf="balanceInquiryForm.get('IPIN').errors.required">IPIN is required</div>
-                                    <div *ngIf="balanceInquiryForm.get('IPIN').errors.minlength">IPIN must be at least 4 characters</div>
+                                    <div *ngIf="balanceInquiryForm.get('IPIN').errors.minlength">IPIN must be  4 characters</div>
+                                    <div *ngIf="balanceInquiryForm.get('IPIN').errors.maxlength">IPIN must be  4 characters</div>
+
                                 </div>
                             </div>
                            
