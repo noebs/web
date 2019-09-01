@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { NgModule, ErrorHandler } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import { CommonModule } from '@angular/common';
 
@@ -9,11 +9,12 @@ import { BsDatepickerModule } from 'ngx-bootstrap/datepicker';
 import { DashboardComponent }       from '../../pages/dashboard/dashboard.component';
 import { BasicservicesComponent }           from '../../pages/basicservices/basicservices.component';
 import { GovteleComponent }            from '../../pages/gov-tele/govtele.component';
-
-import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { ModalModule } from 'ngx-bootstrap/modal';
 import { BalanceInquiryComponent } from 'app/pages/balance-inquiry/balance-inquiry.component';
 import { BalanceinquiryService } from 'app/services/balanceinquiry.service';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { GlobalErrorHandler } from '../../services/GlobalErrorHandler ';
+import { NgxSpinnerModule } from 'ngx-spinner';
 
 @NgModule({
   imports: [
@@ -22,17 +23,18 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     BsDatepickerModule.forRoot(),
     CommonModule,
     RouterModule.forChild(AdminLayoutRoutes),
-    NgbModule
+    ModalModule.forRoot() ,
+    NgxSpinnerModule
   ],
   declarations: [
-    DashboardComponent, 
+    DashboardComponent,
     BasicservicesComponent,
     GovteleComponent,
     BalanceInquiryComponent
-    
+
   ]
   ,
-  providers: [BalanceinquiryService],
+  providers: [BalanceinquiryService ,   {provide: ErrorHandler, useClass: GlobalErrorHandler}],
 
 })
 

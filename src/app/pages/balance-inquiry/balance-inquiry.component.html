@@ -1,41 +1,42 @@
 <div class="row">
     <div class="col-md-12">
 
-            <nav aria-label="breadcrumb" role="navigation">
-                    <ol class="breadcrumb">
-                      <li class="breadcrumb-item"><a [routerLink]="['/dashboard/basic-servces']">BasicServices</a></li>
-                      <li class="breadcrumb-item active" aria-current="page">BalanceInquiry</li>
-                    </ol>
-                  </nav>
+        <nav aria-label="breadcrumb" role="navigation">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item">
+                    <a [routerLink]="['/dashboard/basic-servces']">BasicServices</a>
+                </li>
+                <li class="breadcrumb-item active" aria-current="page">BalanceInquiry</li>
+            </ol>
+        </nav>
     </div>
     <div class="col-md-12">
         <div class="card">
             <div class="card-header">
                 <div class="card-body">
-                    <form [formGroup]="balanceInquiryForm" (ngSubmit)="onSubmit()" >
+                    <form [formGroup]="balanceInquiryForm" (ngSubmit)="onSubmit()">
                         <div class="form-row">
-                           
+
                             <div class="form-group col-12">
                                 <label>Card Number</label>
-                                <input type="text" formControlName="cardNumber" class="form-control"
-                                 [ngClass]="{ 'is-invalid': balanceInquiryForm.get('cardNumber').errors && (balanceInquiryForm.get('cardNumber').touched
-                                 || balanceInquiryForm.get('cardNumber').dirty)}"  />
+                                <input type="text" formControlName="cardNumber" class="form-control" [ngClass]="{ 'is-invalid': balanceInquiryForm.get('cardNumber').errors && (balanceInquiryForm.get('cardNumber').touched
+                                 || balanceInquiryForm.get('cardNumber').dirty)}" />
                                 <div *ngIf="balanceInquiryForm.get('cardNumber').errors" class="invalid-feedback">
                                     <div *ngIf="balanceInquiryForm.get('cardNumber').errors.required">Card Number is required</div>
-                                    <div *ngIf="balanceInquiryForm.get('cardNumber').errors.minlength ||  balanceInquiryForm.get('cardNumber').errors.maxlength">card number must be  16 or 19 characters</div>
+                                    <div *ngIf="balanceInquiryForm.get('cardNumber').errors.minlength ||  balanceInquiryForm.get('cardNumber').errors.maxlength">card number must be 16 or 19 characters</div>
                                 </div>
                             </div>
                             <div class="form-group col-12">
                                 <label>Expiry Date</label>
-                                <input type="text"  bsDatepicker   [bsConfig]="{dateInputFormat: 'YYMM' , minMode: 'month'}"
-                                  #dp="bsDatepicker" formControlName="expDate" class="form-control" [ngClass]="{ 'is-invalid': balanceInquiryForm.get('expDate').errors && (balanceInquiryForm.get('expDate').touched
+                                <input type="text" bsDatepicker [bsConfig]="{dateInputFormat: 'YYMM' , minMode: 'month'}" #dp="bsDatepicker" formControlName="expDate"
+                                    class="form-control" [ngClass]="{ 'is-invalid': balanceInquiryForm.get('expDate').errors && (balanceInquiryForm.get('expDate').touched
                                 || balanceInquiryForm.get('expDate').dirty) }" />
                                 <div *ngIf="balanceInquiryForm.get('expDate').errors" class="invalid-feedback">
                                     <div *ngIf="balanceInquiryForm.get('expDate').errors.required"> Expiry date is required</div>
                                 </div>
                             </div>
                         </div>
-                        
+
                         <div class="form-row">
                             <div class="form-group col-12">
                                 <label>IPIN</label>
@@ -43,16 +44,16 @@
                                 || balanceInquiryForm.get('IPIN').dirty)}" />
                                 <div *ngIf="balanceInquiryForm.get('IPIN').errors" class="invalid-feedback">
                                     <div *ngIf="balanceInquiryForm.get('IPIN').errors.required">IPIN is required</div>
-                                    <div *ngIf="balanceInquiryForm.get('IPIN').errors.minlength">IPIN must be  4 characters</div>
-                                    <div *ngIf="balanceInquiryForm.get('IPIN').errors.maxlength">IPIN must be  4 characters</div>
+                                    <div *ngIf="balanceInquiryForm.get('IPIN').errors.minlength">IPIN must be 4 characters</div>
+                                    <div *ngIf="balanceInquiryForm.get('IPIN').errors.maxlength">IPIN must be 4 characters</div>
 
                                 </div>
                             </div>
-                           
+
                         </div>
-                        
+
                         <div class="text-center">
-                            <button class="btn btn-primary mr-1">Register</button>
+                            <button class="btn btn-primary mr-1" [disabled]="submitted">Register</button>
                         </div>
                     </form>
                 </div>
@@ -60,3 +61,21 @@
         </div>
     </div>
 </div>
+
+<ngx-spinner bdColor="rgba(51,51,51,0.8)" size="medium" color="#fca0a0" type="ball-clip-rotate-multiple" >
+
+    <p style="font-size: 20px; color: white">Loading...</p>
+</ngx-spinner>
+
+<ng-template #template>
+    <div class="modal-header">
+      <h4 class="modal-title pull-left">error</h4>
+      <button type="button" class="close pull-right" aria-label="Close" (click)="modalRef.hide()">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+    <div class="modal-body">
+      <p>code : {{error.status}}</p>  
+      <p>message :  {{error.message}}</p>  
+    </div>
+  </ng-template>

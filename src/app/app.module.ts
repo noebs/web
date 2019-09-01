@@ -32,7 +32,13 @@ import { HttpClientModule } from '@angular/common/http';
     }),
     SidebarModule,
     NavbarModule,
-    ToastrModule.forRoot(),
+    ToastrModule.forRoot(
+      {
+        closeButton : true,
+        disableTimeOut : true,
+        positionClass: 'toast-top-center'
+      }
+    ),
     FooterModule ,
     FormsModule,
     ReactiveFormsModule
