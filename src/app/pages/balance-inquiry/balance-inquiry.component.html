@@ -19,20 +19,25 @@
 
                             <div class="form-group col-12">
                                 <label>Card Number</label>
-                                <input type="text" formControlName="cardNumber" class="form-control" [ngClass]="{ 'is-invalid': balanceInquiryForm.get('cardNumber').errors && (balanceInquiryForm.get('cardNumber').touched
-                                 || balanceInquiryForm.get('cardNumber').dirty)}" />
-                                <div *ngIf="balanceInquiryForm.get('cardNumber').errors" class="invalid-feedback">
-                                    <div *ngIf="balanceInquiryForm.get('cardNumber').errors.required">Card Number is required</div>
-                                    <div *ngIf="balanceInquiryForm.get('cardNumber').errors.minlength ||  balanceInquiryForm.get('cardNumber').errors.maxlength">card number must be 16 or 19 characters</div>
+                                <input type="text" formControlName="PAN" class="form-control" [ngClass]="{ 'is-invalid': balanceInquiryForm.get('PAN').errors && (balanceInquiryForm.get('PAN').touched
+                                 || balanceInquiryForm.get('PAN').dirty)}" />
+                                <div *ngIf="balanceInquiryForm.get('PAN').errors" class="invalid-feedback">
+                                    <div *ngIf="balanceInquiryForm.get('PAN').errors.required">Card Number is required
+                                    </div>
+                                    <div
+                                        *ngIf="balanceInquiryForm.get('PAN').errors.minlength ||  balanceInquiryForm.get('PAN').errors.maxlength">
+                                        card number must be 16 or 19 characters</div>
                                 </div>
                             </div>
                             <div class="form-group col-12">
                                 <label>Expiry Date</label>
-                                <input type="text" bsDatepicker [bsConfig]="{dateInputFormat: 'YYMM' , minMode: 'month'}" #dp="bsDatepicker" formControlName="expDate"
-                                    class="form-control" [ngClass]="{ 'is-invalid': balanceInquiryForm.get('expDate').errors && (balanceInquiryForm.get('expDate').touched
+                                <input type="text" bsDatepicker
+                                    [bsConfig]="{dateInputFormat: 'YYMM' , minMode: 'month'}" #dp="bsDatepicker"
+                                    formControlName="expDate" class="form-control" [ngClass]="{ 'is-invalid': balanceInquiryForm.get('expDate').errors && (balanceInquiryForm.get('expDate').touched
                                 || balanceInquiryForm.get('expDate').dirty) }" />
                                 <div *ngIf="balanceInquiryForm.get('expDate').errors" class="invalid-feedback">
-                                    <div *ngIf="balanceInquiryForm.get('expDate').errors.required"> Expiry date is required</div>
+                                    <div *ngIf="balanceInquiryForm.get('expDate').errors.required"> Expiry date is
+                                        required</div>
                                 </div>
                             </div>
                         </div>
@@ -44,8 +49,10 @@
                                 || balanceInquiryForm.get('IPIN').dirty)}" />
                                 <div *ngIf="balanceInquiryForm.get('IPIN').errors" class="invalid-feedback">
                                     <div *ngIf="balanceInquiryForm.get('IPIN').errors.required">IPIN is required</div>
-                                    <div *ngIf="balanceInquiryForm.get('IPIN').errors.minlength">IPIN must be 4 characters</div>
-                                    <div *ngIf="balanceInquiryForm.get('IPIN').errors.maxlength">IPIN must be 4 characters</div>
+                                    <div *ngIf="balanceInquiryForm.get('IPIN').errors.minlength">IPIN must be 4
+                                        characters</div>
+                                    <div *ngIf="balanceInquiryForm.get('IPIN').errors.maxlength">IPIN must be 4
+                                        characters</div>
 
                                 </div>
                             </div>
@@ -62,20 +69,57 @@
     </div>
 </div>
 
-<ngx-spinner bdColor="rgba(51,51,51,0.8)" size="medium" color="#fca0a0" type="ball-clip-rotate-multiple" >
+<ngx-spinner bdColor="rgba(51,51,51,0.8)" size="medium" color="#fca0a0" type="ball-clip-rotate-multiple">
 
     <p style="font-size: 20px; color: white">Loading...</p>
 </ngx-spinner>
 
 <ng-template #template>
     <div class="modal-header">
-      <h4 class="modal-title pull-left">error</h4>
-      <button type="button" class="close pull-right" aria-label="Close" (click)="modalRef.hide()">
-        <span aria-hidden="true">&times;</span>
-      </button>
+        <h4 class="modal-title pull-left" style="color: #dc3545" *ngIf="reponsecode===502 || reponsecode===504
+        ||reponsecode===500 || reponsecode===0">error</h4>
+        <h4 class="modal-title pull-left" style="color: #28a745" *ngIf="reponsecode==='200'">success</h4>
+        <button type="button" class="close pull-right" aria-label="Close" (click)="modalRef.hide()">
+            <span aria-hidden="true">&times;</span>
+        </button>
     </div>
     <div class="modal-body">
-      <p>code : {{error.status}}</p>  
-      <p>message :  {{error.message}}</p>  
+
+        <div class="invalid-feedback d-block" *ngIf="reponsecode===502">
+
+            <h6> responseMessage : {{error.error.details.responseMessage}} </h6>
+            <h6> responseStatus : {{error.error.details.responseStatus}} </h6>
+            <h6> tranCurrency : {{error.error.details.tranCurrency}} </h6>
+            <h6> PAN : {{error.error.details.PAN}} </h6>
+            <h6> responseCode : {{error.error.details.responseCode}} </h6>
+
+        </div>
+
+
+        <div class="invalid-feedback d-block" *ngIf="reponsecode===0">
+            <h6> Message : Please check your internt connection </h6>
+        </div>
+
+
+        <div class="invalid-feedback d-block" *ngIf="reponsecode===500">
+            <h6> Message : Some thing went wrong with server .. Contact us </h6>
+        </div>
+
+
+        <div class="invalid-feedback d-block" *ngIf="reponsecode===504">
+            <h6> Message : EBS connection problem .. Contact us </h6>
+        </div>
+
+
+
+        <div class="valid-feedback d-block" *ngIf="reponsecode==='200'">
+
+            <h6> responseMessage : {{error.error.details.responseMessage}} </h6>
+            <h6> responseStatus : {{error.error.details.responseStatus}} </h6>
+            <h6> tranCurrency : {{error.error.details.tranCurrency}} </h6>
+            <h6> PAN : {{error.error.details.PAN}} </h6>
+            <h6> responseCode : {{error.error.details.responseCode}} </h6>
+
+        </div>
     </div>
-  </ng-template>
+</ng-template>

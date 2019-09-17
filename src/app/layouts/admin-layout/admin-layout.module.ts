@@ -15,6 +15,8 @@ import { BalanceinquiryService } from 'app/services/balanceinquiry.service';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { GlobalErrorHandler } from '../../services/GlobalErrorHandler ';
 import { NgxSpinnerModule } from 'ngx-spinner';
+import { MapToIterablePipe } from '../../pages/map-to-iterable.pipe';
+
 
 @NgModule({
   imports: [
@@ -30,8 +32,8 @@ import { NgxSpinnerModule } from 'ngx-spinner';
     DashboardComponent,
     BasicservicesComponent,
     GovteleComponent,
-    BalanceInquiryComponent
-
+    BalanceInquiryComponent ,
+    MapToIterablePipe
   ]
   ,
   providers: [BalanceinquiryService ,   {provide: ErrorHandler, useClass: GlobalErrorHandler}],

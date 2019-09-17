@@ -6,6 +6,10 @@ import { HttpResponse, HttpErrorResponse } from '@angular/common/http';
 import { ToastrService } from 'ngx-toastr';
 import { BsModalService, BsModalRef, ModalOptions } from 'ngx-bootstrap/modal';
 import { NgxSpinnerService } from 'ngx-spinner';
+import * as moment from 'moment';
+import * as uuid from 'uuid';
+
+
 @Component({
   selector: 'app-balance-inquiry',
   templateUrl: './balance-inquiry.component.html',
@@ -13,11 +17,13 @@ import { NgxSpinnerService } from 'ngx-spinner';
 })
 export class BalanceInquiryComponent implements OnInit {
 
+ 
   get f() { return this.balanceInquiryForm.controls; }
 
   balanceInquiryForm: FormGroup;
   submitted = false;
   error ;
+  reponsecode;
 
   minMode: BsDatepickerViewMode = 'month';
   dateInputFormat: 'MM/DD/YYYY'
@@ -26,7 +32,7 @@ export class BalanceInquiryComponent implements OnInit {
   @ViewChild('template' , { static: true }) template: TemplateRef<any>;
   modalRef: BsModalRef;
   modalconfig:ModalOptions = {
-    backdrop: false,
+    
     ignoreBackdropClick: true
   };
 
@@ -35,11 +41,18 @@ export class BalanceInquiryComponent implements OnInit {
      private balanceInqSerivce: BalanceinquiryService) { }
 
   ngOnInit() {
+   let today = moment().format('YYMMDDhhmmss');
+   const myId = uuid.v4();
+    console.log(myId);
+    console.log(today);
     this.balanceInquiryForm = this.formBuilder.group({
 
-      cardNumber: ['', [Validators.required, Validators.minLength(16), Validators.maxLength(19)]],
+      PAN: ['', [Validators.required, Validators.minLength(16), Validators.maxLength(19)]],
       expDate: ['', Validators.required],
       IPIN: ['', [Validators.required, Validators.minLength(4), , Validators.maxLength(4)]],
+      applicationId: 'ActsQA' ,
+      tranDateTime: today ,
+      UUID: myId
     });
   }
 
@@ -53,9 +66,12 @@ export class BalanceInquiryComponent implements OnInit {
 
         }, (err) => {
             this.spinner.hide();
+            this.reponsecode = err.status;
+            console.log( err );
             if (err instanceof HttpErrorResponse) {
               this.modalRef = this.modalService.show(this.template, this.modalconfig);
               this.error = err;
+                  console.log( this.error);
 
             }
           }
