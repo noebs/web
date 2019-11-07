@@ -16,6 +16,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { GlobalErrorHandler } from '../../services/GlobalErrorHandler ';
 import { NgxSpinnerModule } from 'ngx-spinner';
 import { MapToIterablePipe } from '../../pages/map-to-iterable.pipe';
+import { IpinEncryptService } from 'app/services/IpinEncrypt.Service';
+import { WorrkingKeyService } from 'app/services/WorkingKey.Service';
 
 
 @NgModule({
@@ -36,7 +38,7 @@ import { MapToIterablePipe } from '../../pages/map-to-iterable.pipe';
     MapToIterablePipe
   ]
   ,
-  providers: [BalanceinquiryService ,   {provide: ErrorHandler, useClass: GlobalErrorHandler}],
+  providers: [BalanceinquiryService ,  WorrkingKeyService , IpinEncryptService ,   {provide: ErrorHandler, useClass: GlobalErrorHandler}],
 
 })
 

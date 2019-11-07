@@ -60,7 +60,7 @@
                         </div>
 
                         <div class="text-center">
-                            <button class="btn btn-primary mr-1" [disabled]="submitted">Register</button>
+                            <button class="btn btn-primary mr-1">Register</button>
                         </div>
                     </form>
                 </div>
@@ -69,10 +69,15 @@
     </div>
 </div>
 
+
+
 <ngx-spinner bdColor="rgba(51,51,51,0.8)" size="medium" color="#fca0a0" type="ball-clip-rotate-multiple">
 
     <p style="font-size: 20px; color: white">Loading...</p>
 </ngx-spinner>
+
+
+
 
 <ng-template #template>
     <div class="modal-header">
@@ -109,6 +114,8 @@
         <div class="invalid-feedback d-block" *ngIf="reponsecode===504">
             <h6> Message : EBS connection problem .. Contact us </h6>
         </div>
+
+
 
 
 

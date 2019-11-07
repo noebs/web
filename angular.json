@@ -29,6 +29,8 @@
               "src/styles.css"
             ],
             "scripts": [
+              "node_modules/jsencrypt/bin/jsencrypt.min.js"
+
             ]
           },
           "configurations": {

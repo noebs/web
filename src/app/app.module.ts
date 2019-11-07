@@ -16,17 +16,19 @@ import { AdminLayoutComponent } from './layouts/admin-layout/admin-layout.compon
 import { LoginComponent } from './landing/login/login.component';
 
 import { HttpClientModule } from '@angular/common/http';
+import { NgxSpinnerModule } from 'ngx-spinner';
 @NgModule({
   declarations: [
     AppComponent,
-    
+
     AdminLayoutComponent,
     LoginComponent
   ],
   imports: [
     BrowserAnimationsModule,
+    NgxSpinnerModule,
       HttpClientModule,
-    
+
     RouterModule.forRoot(AppRoutes,{
       useHash: false
     }),

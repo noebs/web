@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { WorrkingKeyService } from 'app/services/WorkingKey.Service';
+import * as moment from 'moment';
+import { NgxSpinnerService } from 'ngx-spinner';
 
 
 @Component({
@@ -8,5 +11,28 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AdminLayoutComponent implements OnInit {
 
-  ngOnInit() { }
+  today = moment().format('YYMMDDhhmmss');
+  applicationId = 'ACTSCon';
+
+
+  constructor(private wokingKey: WorrkingKeyService ,  private spinner: NgxSpinnerService){}
+
+  ngOnInit() {
+    console.log('Fetching Key ...')
+    this.spinner.show();
+    this.wokingKey.getKey(this.applicationId , this.today)
+    .subscribe(
+      (response)=> {
+
+        this.spinner.hide();
+        localStorage.setItem('pubKey' , response.ebs_response.pubKeyValue)
+        console.log(response.ebs_response.pubKeyValue );
+      } ,
+      (err) => {
+        this.spinner.hide();
+        console.log(err)
+      }
+        );
+  }
+
 }
