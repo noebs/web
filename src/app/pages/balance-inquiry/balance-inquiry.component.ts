@@ -1,13 +1,14 @@
-import { Component, OnInit, ViewChild, TemplateRef } from '@angular/core';
+import { Component, OnInit, ViewChild, TemplateRef, ElementRef } from '@angular/core';
 import { FormGroup, FormBuilder, FormControl, Validators } from '@angular/forms';
 import { BsDatepickerConfig, BsDatepickerViewMode } from 'ngx-bootstrap/datepicker';
 import { BalanceinquiryService } from '../../services/balanceinquiry.service';
-import { HttpResponse, HttpErrorResponse } from '@angular/common/http';
-import { ToastrService } from 'ngx-toastr';
+import { HttpErrorResponse } from '@angular/common/http';
 import { BsModalService, BsModalRef, ModalOptions } from 'ngx-bootstrap/modal';
 import { NgxSpinnerService } from 'ngx-spinner';
 import * as moment from 'moment';
 import { IpinEncryptService } from 'app/services/IpinEncrypt.Service';
+import uuidv4 from 'uuid/v4';
+
 
 
 
@@ -23,11 +24,12 @@ export class BalanceInquiryComponent implements OnInit {
   balanceInquiryForm: FormGroup;
   error;
   reponsecode;
-  key
+  successResponse;
 
   minMode: BsDatepickerViewMode = 'month';
   dateInputFormat: 'MM/DD/YYYY'
   bsConfig: Partial<BsDatepickerConfig>;
+  @ViewChild('expDatePick', { static: true }) inputDate: ElementRef;
 
   @ViewChild('template', { static: true }) template: TemplateRef<any>;
   modalRef: BsModalRef;
@@ -61,14 +63,23 @@ export class BalanceInquiryComponent implements OnInit {
 
     if (this.balanceInquiryForm.valid) {
       this.spinner.show();
-      const pinBlock = this.ipinEnc.encrypt(this.balanceInquiryForm.get('IPIN').value, localStorage.getItem('pubKey'));
-      console.log(pinBlock);
-      console.log(btoa(pinBlock))
-      this.balanceInquiryForm.controls['UUID'].setValue(btoa(pinBlock));
+
+      const V4uuid = uuidv4();
+
+      const ipinBlock = this.ipinEnc.encrypt(this.balanceInquiryForm.get('IPIN').value,
+        localStorage.getItem('pubKey'), V4uuid);
+
+      console.log('base64.encode ' + ipinBlock);
+      this.balanceInquiryForm.controls['IPIN'].setValue(ipinBlock);
+      this.balanceInquiryForm.controls['UUID'].setValue(V4uuid);
+      this.balanceInquiryForm.controls['expDate'].setValue(this.inputDate.nativeElement.value);
+
       console.log(this.balanceInquiryForm.value);
       this.balanceInqSerivce.balanceInquiry(this.balanceInquiryForm.value)
         .subscribe((response) => {
           this.spinner.hide();
+          this.successResponse = response;
+          this.reponsecode = 200;
           console.log(response);
           this.modalRef = this.modalService.show(this.template, this.modalconfig);
         }, (err) => {
@@ -79,6 +90,7 @@ export class BalanceInquiryComponent implements OnInit {
             this.modalRef = this.modalService.show(this.template, this.modalconfig);
             this.error = err;
             console.log(this.error);
+            
 
           }
         }

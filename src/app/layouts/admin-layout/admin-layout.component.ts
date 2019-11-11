@@ -26,7 +26,7 @@ export class AdminLayoutComponent implements OnInit {
 
         this.spinner.hide();
         localStorage.setItem('pubKey' , response.ebs_response.pubKeyValue)
-        console.log(response.ebs_response.pubKeyValue );
+        console.log(response.ebs_response);
       } ,
       (err) => {
         this.spinner.hide();

@@ -31,7 +31,7 @@
                             </div>
                             <div class="form-group col-12">
                                 <label>Expiry Date</label>
-                                <input type="text" bsDatepicker
+                                <input #expDatePick type="text" bsDatepicker
                                     [bsConfig]="{dateInputFormat: 'YYMM' , minMode: 'month'}" #dp="bsDatepicker"
                                     formControlName="expDate" class="form-control" [ngClass]="{ 'is-invalid': balanceInquiryForm.get('expDate').errors && (balanceInquiryForm.get('expDate').touched
                                 || balanceInquiryForm.get('expDate').dirty) }" />
@@ -83,7 +83,7 @@
     <div class="modal-header">
         <h4 class="modal-title pull-left" style="color: #dc3545" *ngIf="reponsecode===502 || reponsecode===504
         ||reponsecode===500 || reponsecode===0">error</h4>
-        <h4 class="modal-title pull-left" style="color: #28a745" *ngIf="reponsecode==='200'">success</h4>
+        <h4 class="modal-title pull-left" style="color: #28a745" *ngIf="reponsecode===200">success</h4>
         <button type="button" class="close pull-right" aria-label="Close" (click)="modalRef.hide()">
             <span aria-hidden="true">&times;</span>
         </button>
@@ -119,13 +119,12 @@
 
 
 
-        <div class="valid-feedback d-block" *ngIf="reponsecode==='200'">
+        <div class="valid-feedback d-block" *ngIf="reponsecode===200">
 
-            <h6> responseMessage : {{error.error.details.responseMessage}} </h6>
-            <h6> responseStatus : {{error.error.details.responseStatus}} </h6>
-            <h6> tranCurrency : {{error.error.details.tranCurrency}} </h6>
-            <h6> PAN : {{error.error.details.PAN}} </h6>
-            <h6> responseCode : {{error.error.details.responseCode}} </h6>
+            <h6> PAN : {{successResponse.ebs_response.PAN}} </h6>
+            <h6> responseMessage : {{successResponse.ebs_response.responseMessage}} </h6>
+            <h6> tranCurrency : {{successResponse.ebs_response.tranCurrency}} </h6>
+            <h6> responseStatus : {{successResponse.ebs_response.responseStatus}} </h6>
 
         </div>
     </div>
