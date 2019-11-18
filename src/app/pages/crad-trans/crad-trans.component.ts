@@ -9,19 +9,14 @@ import * as moment from 'moment';
 import { IpinEncryptService } from 'app/services/IpinEncrypt.Service';
 import uuidv4 from 'uuid/v4';
 
-
-
-
 @Component({
-  selector: 'app-balance-inquiry',
-  templateUrl: './balance-inquiry.component.html',
-  styleUrls: ['./balance-inquiry.component.scss']
+  selector: 'app-crad-trans',
+  templateUrl: './crad-trans.component.html',
+  styleUrls: ['./crad-trans.component.scss']
 })
-export class BalanceInquiryComponent implements OnInit {
+export class CradTransComponent implements OnInit {
 
-
-
-  balanceInquiryForm: FormGroup;
+  cardTranForm: FormGroup;
   error;
   reponsecode;
   successResponse;
@@ -46,10 +41,12 @@ export class BalanceInquiryComponent implements OnInit {
   ngOnInit() {
     let today = moment().format('YYMMDDhhmmss');
 
-    this.balanceInquiryForm = this.formBuilder.group({
-
+    this.cardTranForm = this.formBuilder.group({
+      toCard: ['', [Validators.required, Validators.minLength(16), Validators.maxLength(19)]],
       PAN: ['', [Validators.required, Validators.minLength(16), Validators.maxLength(19)]],
       expDate: ['', Validators.required],
+      tranAmount: ['', [Validators.required, Validators.min(1)]],
+
       IPIN: ['', [Validators.required, Validators.minLength(4), , Validators.maxLength(4)]],
       applicationId: 'ACTSCon',
       tranDateTime: today,
@@ -61,21 +58,21 @@ export class BalanceInquiryComponent implements OnInit {
 
   onSubmit() {
 
-    if (this.balanceInquiryForm.valid) {
+    if (this.cardTranForm.valid) {
       this.spinner.show();
 
       const V4uuid = uuidv4();
 
-      const ipinBlock = this.ipinEnc.encrypt(this.balanceInquiryForm.get('IPIN').value,
+      const ipinBlock = this.ipinEnc.encrypt(this.cardTranForm.get('IPIN').value,
         localStorage.getItem('pubKey'), V4uuid);
 
       console.log('base64.encode ' + ipinBlock);
-      this.balanceInquiryForm.controls['IPIN'].setValue(ipinBlock);
-      this.balanceInquiryForm.controls['UUID'].setValue(V4uuid);
-      this.balanceInquiryForm.controls['expDate'].setValue(this.inputDate.nativeElement.value);
+      this.cardTranForm.controls['IPIN'].setValue(ipinBlock);
+      this.cardTranForm.controls['UUID'].setValue(V4uuid);
+      this.cardTranForm.controls['expDate'].setValue(this.inputDate.nativeElement.value);
 
-      console.log(this.balanceInquiryForm.value);
-      this.balanceInqSerivce.balanceInquiry(this.balanceInquiryForm.value)
+      console.log(this.cardTranForm.value);
+      this.balanceInqSerivce.cardTcard(this.cardTranForm.value)
         .subscribe((response) => {
           this.spinner.hide();
           this.successResponse = response;
@@ -101,4 +98,5 @@ export class BalanceInquiryComponent implements OnInit {
 
 
   }
+
 }

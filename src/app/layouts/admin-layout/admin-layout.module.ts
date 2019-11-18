@@ -8,6 +8,8 @@ import { BsDatepickerModule } from 'ngx-bootstrap/datepicker';
 
 import { DashboardComponent }       from '../../pages/dashboard/dashboard.component';
 import { BasicservicesComponent }           from '../../pages/basicservices/basicservices.component';
+import { CradTransComponent } from '../../pages/crad-trans/crad-trans.component';
+
 import { GovteleComponent }            from '../../pages/gov-tele/govtele.component';
 import { ModalModule } from 'ngx-bootstrap/modal';
 import { BalanceInquiryComponent } from 'app/pages/balance-inquiry/balance-inquiry.component';
@@ -35,6 +37,7 @@ import { WorrkingKeyService } from 'app/services/WorkingKey.Service';
     BasicservicesComponent,
     GovteleComponent,
     BalanceInquiryComponent ,
+    CradTransComponent,
     MapToIterablePipe
   ]
   ,

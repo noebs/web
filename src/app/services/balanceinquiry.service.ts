@@ -26,4 +26,9 @@ export class BalanceinquiryService {
     return this.httpclient.post(this.BaseURL + '/consumer/balance', requestbody , this.httpOptions);
   }
 
+
+  public cardTcard(requestbody: any): Observable<any> {
+    return this.httpclient.post(this.BaseURL + '/consumer/p2p', requestbody , this.httpOptions);
+  }
+
 }
