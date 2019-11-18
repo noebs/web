@@ -1,13 +1,13 @@
-import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
-import { ToastrModule } from "ngx-toastr";
+import { ToastrModule } from 'ngx-toastr';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 
 import { SidebarModule } from './sidebar/sidebar.module';
 import { FooterModule } from './shared/footer/footer.module';
-import { NavbarModule} from './shared/navbar/navbar.module';
+import { NavbarModule } from './shared/navbar/navbar.module';
 
 import { AppComponent } from './app.component';
 import { AppRoutes } from './app.routing';
@@ -27,21 +27,21 @@ import { NgxSpinnerModule } from 'ngx-spinner';
   imports: [
     BrowserAnimationsModule,
     NgxSpinnerModule,
-      HttpClientModule,
+    HttpClientModule,
 
-    RouterModule.forRoot(AppRoutes,{
+    RouterModule.forRoot(AppRoutes, {
       useHash: false
     }),
     SidebarModule,
     NavbarModule,
     ToastrModule.forRoot(
       {
-        closeButton : true,
-        disableTimeOut : true,
+        closeButton: true,
+        timeOut: 5000,
         positionClass: 'toast-top-center'
       }
     ),
-    FooterModule ,
+    FooterModule,
     FormsModule,
     ReactiveFormsModule
   ],

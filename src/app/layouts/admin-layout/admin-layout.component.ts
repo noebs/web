@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { WorrkingKeyService } from 'app/services/WorkingKey.Service';
 import * as moment from 'moment';
 import { NgxSpinnerService } from 'ngx-spinner';
+import { ToastrService } from 'ngx-toastr';
 
 
 @Component({
@@ -15,7 +16,9 @@ export class AdminLayoutComponent implements OnInit {
   applicationId = 'ACTSCon';
 
 
-  constructor(private wokingKey: WorrkingKeyService ,  private spinner: NgxSpinnerService){}
+  constructor(private wokingKey: WorrkingKeyService ,
+    private toastr: ToastrService,
+    private spinner: NgxSpinnerService){}
 
   ngOnInit() {
     console.log('Fetching Key ...')
@@ -25,11 +28,14 @@ export class AdminLayoutComponent implements OnInit {
       (response)=> {
 
         this.spinner.hide();
+        this.toastr.success('key successfully downloaded','success');
         localStorage.setItem('pubKey' , response.ebs_response.pubKeyValue)
         console.log(response.ebs_response);
       } ,
       (err) => {
         this.spinner.hide();
+        this.toastr.error('key not downloaded', 'failed');
+
         console.log(err)
       }
         );
