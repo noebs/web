@@ -1,7 +1,7 @@
 import { Component, OnInit, ViewChild, TemplateRef, ElementRef } from '@angular/core';
 import { FormGroup, FormBuilder , Validators } from '@angular/forms';
 import { BsDatepickerConfig, BsDatepickerViewMode } from 'ngx-bootstrap/datepicker';
-import { BalanceinquiryService } from '../../services/balanceinquiry.service';
+import { NoebsApiService } from '../../services/NoebsApi.service';
 import { HttpErrorResponse } from '@angular/common/http';
 import { BsModalService, BsModalRef, ModalOptions } from 'ngx-bootstrap/modal';
 import { NgxSpinnerService } from 'ngx-spinner';
@@ -41,7 +41,7 @@ export class BalanceInquiryComponent implements OnInit {
     private spinner: NgxSpinnerService,
     private modalService: BsModalService,
     private ipinEnc: IpinEncryptService,
-    private balanceInqSerivce: BalanceinquiryService) { }
+    private noebsApiService: NoebsApiService) { }
 
   ngOnInit() {
     let today = moment().format('YYMMDDhhmmss');
@@ -75,7 +75,7 @@ export class BalanceInquiryComponent implements OnInit {
       this.balanceInquiryForm.controls['expDate'].setValue(this.inputDate.nativeElement.value);
 
       console.log(this.balanceInquiryForm.value);
-      this.balanceInqSerivce.balanceInquiry(this.balanceInquiryForm.value)
+      this.noebsApiService.balanceInquiry(this.balanceInquiryForm.value)
         .subscribe((response) => {
           this.spinner.hide();
           this.successResponse = response;
