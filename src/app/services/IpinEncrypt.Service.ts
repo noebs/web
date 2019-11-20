@@ -7,10 +7,10 @@ export class IpinEncryptService {
      const jsencrypt = new JSEncrypt();
      console.log('ipin '+ipin)
      console.log('publicKey  '+publicKey)
-     
+
      jsencrypt.setPublicKey(publicKey);
       const data: string = jsencrypt.encrypt(v4uuid + ipin);
-  
+
     return data;
   }
 

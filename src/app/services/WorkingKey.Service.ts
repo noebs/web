@@ -13,7 +13,7 @@ export class WorrkingKeyService {
    headers: new HttpHeaders({
       'content-type': 'application/json'
    })
- };
+ }
 
  uuid = uuid.v4();
 
