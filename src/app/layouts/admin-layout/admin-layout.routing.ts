@@ -9,6 +9,8 @@ import { ElectricityComponent } from 'app/pages/electricity/electricity.componen
 import { TopUpComponent } from 'app/pages/top-up/top-up.component';
 import { BillInquiryComponent } from 'app/pages/bill-inquiry/bill-inquiry.component';
 import { BillPaymentComponent } from 'app/pages/bill-payment/bill-payment.component';
+import { MoheComponent } from 'app/pages/mohe/mohe.component';
+import { MoheArabComponent } from 'app/pages/mohe-arab/mohe-arab.component';
 
 export const AdminLayoutRoutes: Routes = [
     { path: '',      component: DashboardComponent },
@@ -19,7 +21,10 @@ export const AdminLayoutRoutes: Routes = [
     {path: 'electricity' , component: ElectricityComponent},
     {path: 'topUp' , component: TopUpComponent},
     {path: 'bill-inq' , component: BillInquiryComponent},
-    {path: 'bill-pay' , component: BillPaymentComponent}
+    {path: 'bill-pay' , component: BillPaymentComponent},
+    {path: 'mohe' , component: MoheComponent},
+    {path: 'mohe-arab' , component: MoheArabComponent}
+
 
 
 

@@ -24,6 +24,8 @@ import { WorrkingKeyService } from 'app/services/WorkingKey.Service';
 import { TopUpComponent } from 'app/pages/top-up/top-up.component';
 import { BillInquiryComponent } from 'app/pages/bill-inquiry/bill-inquiry.component';
 import { BillPaymentComponent } from 'app/pages/bill-payment/bill-payment.component';
+import { MoheComponent } from 'app/pages/mohe/mohe.component';
+import { MoheArabComponent } from 'app/pages/mohe-arab/mohe-arab.component';
 
 
 @NgModule({
@@ -45,7 +47,9 @@ import { BillPaymentComponent } from 'app/pages/bill-payment/bill-payment.compon
     ElectricityComponent,
     TopUpComponent,
     BillInquiryComponent,
-    BillPaymentComponent
+    BillPaymentComponent ,
+    MoheComponent,
+    MoheArabComponent
   ]
   ,
   providers: [NoebsApiService ,  WorrkingKeyService , IpinEncryptService ,   {provide: ErrorHandler, useClass: GlobalErrorHandler}],
