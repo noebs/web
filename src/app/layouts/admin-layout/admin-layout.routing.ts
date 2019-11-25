@@ -11,6 +11,7 @@ import { BillInquiryComponent } from 'app/pages/bill-inquiry/bill-inquiry.compon
 import { BillPaymentComponent } from 'app/pages/bill-payment/bill-payment.component';
 import { MoheComponent } from 'app/pages/mohe/mohe.component';
 import { MoheArabComponent } from 'app/pages/mohe-arab/mohe-arab.component';
+import { E15Component } from 'app/pages/e15/e15.component';
 
 export const AdminLayoutRoutes: Routes = [
     { path: '',      component: DashboardComponent },
@@ -23,7 +24,9 @@ export const AdminLayoutRoutes: Routes = [
     {path: 'bill-inq' , component: BillInquiryComponent},
     {path: 'bill-pay' , component: BillPaymentComponent},
     {path: 'mohe' , component: MoheComponent},
-    {path: 'mohe-arab' , component: MoheArabComponent}
+    {path: 'mohe-arab' , component: MoheArabComponent},
+    {path: 'e15' , component: E15Component}
+
 
 
 

@@ -173,6 +173,8 @@
       <div class="valid-feedback d-block" *ngIf="reponsecode===200">
 
           <h6> PAN : {{successResponse.ebs_response.PAN}} </h6>
+          <h6> Customer Name : {{successResponse.ebs_response.billInfo.customerName}}</h6>
+          <h6> Token : {{successResponse.ebs_response.billInfo.token}}</h6>
           <h6> tranAmount : {{successResponse.ebs_response.tranAmount}} </h6>
           <h6> responseMessage : {{successResponse.ebs_response.responseMessage}} </h6>
           <h6> tranCurrency : {{successResponse.ebs_response.tranCurrency}} </h6>

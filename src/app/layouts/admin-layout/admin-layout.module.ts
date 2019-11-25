@@ -26,6 +26,7 @@ import { BillInquiryComponent } from 'app/pages/bill-inquiry/bill-inquiry.compon
 import { BillPaymentComponent } from 'app/pages/bill-payment/bill-payment.component';
 import { MoheComponent } from 'app/pages/mohe/mohe.component';
 import { MoheArabComponent } from 'app/pages/mohe-arab/mohe-arab.component';
+import { E15Component } from 'app/pages/e15/e15.component';
 
 
 @NgModule({
@@ -49,7 +50,8 @@ import { MoheArabComponent } from 'app/pages/mohe-arab/mohe-arab.component';
     BillInquiryComponent,
     BillPaymentComponent ,
     MoheComponent,
-    MoheArabComponent
+    MoheArabComponent,
+    E15Component
   ]
   ,
   providers: [NoebsApiService ,  WorrkingKeyService , IpinEncryptService ,   {provide: ErrorHandler, useClass: GlobalErrorHandler}],

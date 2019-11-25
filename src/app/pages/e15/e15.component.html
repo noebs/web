@@ -1,0 +1,191 @@
+<div class="row">
+    <div class="col-md-12">
+
+        <nav aria-label="breadcrumb" role="navigation">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item">
+                    <a [routerLink]="['/dashboard/gov-tele']">Gov-Tele Services</a>
+                </li>
+                <li class="breadcrumb-item active" aria-current="page"></li>
+            </ol>
+        </nav>
+    </div>
+    <div class="col-md-12">
+        <div class="card">
+            <div class="card-header">
+                <div class="card-body">
+                    <form [formGroup]="e15Form" (ngSubmit)="onSubmit()">
+
+
+
+                        <div class="form-row">
+
+
+
+                            <div class="form-group col-12">
+                                <label>Bank Code</label>
+                                <input type="text" formControlName="paymentInfo" class="form-control" [ngClass]="{ 'is-invalid': e15Form.get('paymentInfo').errors && (e15Form.get('paymentInfo').touched
+                                 || e15Form.get('paymentInfo').dirty)}" />
+                                <div *ngIf="e15Form.get('paymentInfo').errors" class="invalid-feedback">
+                                    <div *ngIf="e15Form.get('paymentInfo').errors.required"> bankCode Number is required
+                                    </div>
+
+                                </div>
+                            </div>
+
+
+
+                            <div class="form-group col-12">
+                                <label>Declarant Code</label>
+                                <input type="text" formControlName="paymentInfo" class="form-control" [ngClass]="{ 'is-invalid': e15Form.get('paymentInfo').errors && (e15Form.get('paymentInfo').touched
+                                 || e15Form.get('paymentInfo').dirty)}" />
+                                <div *ngIf="e15Form.get('paymentInfo').errors" class="invalid-feedback">
+                                    <div *ngIf="e15Form.get('paymentInfo').errors.required"> declarantCode Number is required
+                                    </div>
+
+                                </div>
+                            </div>
+
+
+
+
+
+                            <div class="form-group col-12">
+                              <label> Card Number</label>
+                              <input type="text" formControlName="PAN" class="form-control" [ngClass]="{ 'is-invalid': e15Form.get('PAN').errors && (e15Form.get('PAN').touched
+                               || e15Form.get('PAN').dirty)}" />
+                              <div *ngIf="e15Form.get('PAN').errors" class="invalid-feedback">
+                                  <div *ngIf="e15Form.get('PAN').errors.required">Card Number is required
+                                  </div>
+                                  <div
+                                      *ngIf="e15Form.get('PAN').errors.minlength ||  e15Form.get('PAN').errors.maxlength">
+                                      card number must be 16 or 19 characters</div>
+                              </div>
+                          </div>
+
+
+
+
+
+
+
+
+                            <div class="form-group col-12">
+                                <label>Expiry Date</label>
+                                <input #expDatePick type="text" bsDatepicker
+                                    [bsConfig]="{dateInputFormat: 'YYMM' , minMode: 'month'}" #dp="bsDatepicker"
+                                    formControlName="expDate" class="form-control" [ngClass]="{ 'is-invalid': e15Form.get('expDate').errors && (e15Form.get('expDate').touched
+                                || e15Form.get('expDate').dirty) }" />
+                                <div *ngIf="e15Form.get('expDate').errors" class="invalid-feedback">
+                                    <div *ngIf="e15Form.get('expDate').errors.required"> Expiry date is
+                                        required</div>
+                                </div>
+                            </div>
+
+
+
+
+
+
+                         <div class="form-group col-12">
+                            <label>Amount</label>
+                            <input type="number" formControlName="tranAmount" class="form-control" [ngClass]="{ 'is-invalid': e15Form.get('tranAmount').errors && (e15Form.get('tranAmount').touched
+                             || e15Form.get('tranAmount').dirty)}" />
+                            <div *ngIf="e15Form.get('tranAmount').errors" class="invalid-feedback">
+                                <div *ngIf="e15Form.get('tranAmount').errors.required"> amount is required
+                                </div>
+                                <div
+                                    *ngIf="e15Form.get('tranAmount').errors.min">
+                                    invalid amount </div>
+                            </div>
+                        </div>
+
+
+
+                            <div class="form-group col-12">
+                                <label>IPIN</label>
+                                <input type="password" formControlName="IPIN" class="form-control" [ngClass]="{ 'is-invalid': e15Form.get('IPIN').errors && (e15Form.get('IPIN').touched
+                                || e15Form.get('IPIN').dirty)}" />
+                                <div *ngIf="e15Form.get('IPIN').errors" class="invalid-feedback">
+                                    <div *ngIf="e15Form.get('IPIN').errors.required">IPIN is required</div>
+                                    <div *ngIf="e15Form.get('IPIN').errors.minlength">IPIN must be 4
+                                        characters</div>
+                                    <div *ngIf="e15Form.get('IPIN').errors.maxlength">IPIN must be 4
+                                        characters</div>
+
+                                </div>
+                            </div>
+
+                          </div>
+                        <div class="text-center">
+                            <button class="btn btn-primary">Submit</button>
+                        </div>
+
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+  </div>
+
+
+
+  <ngx-spinner bdColor="rgba(51,51,51,0.8)" size="medium" color="#fca0a0" type="ball-clip-rotate-multiple">
+
+    <p style="font-size: 20px; color: white">Loading...</p>
+  </ngx-spinner>
+
+
+
+
+  <ng-template #template>
+    <div class="modal-header">
+        <h4 class="modal-title pull-left" style="color: #dc3545" *ngIf="reponsecode===502 || reponsecode===504
+        ||reponsecode===500 || reponsecode===0">error</h4>
+        <h4 class="modal-title pull-left" style="color: #28a745" *ngIf="reponsecode===200">success</h4>
+        <button type="button" class="close pull-right" aria-label="Close" (click)="modalRef.hide()">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+    <div class="modal-body">
+
+        <div class="invalid-feedback d-block" *ngIf="reponsecode===502">
+
+            <h6> responseMessage : {{error.error.details.responseMessage}} </h6>
+            <h6> responseStatus : {{error.error.details.responseStatus}} </h6>
+            <h6> tranCurrency : {{error.error.details.tranCurrency}} </h6>
+            <h6> PAN : {{error.error.details.PAN}} </h6>
+            <h6> responseCode : {{error.error.details.responseCode}} </h6>
+
+        </div>
+
+
+        <div class="invalid-feedback d-block" *ngIf="reponsecode===0">
+            <h6> Message : Please check your internt connection </h6>
+        </div>
+
+
+        <div class="invalid-feedback d-block" *ngIf="reponsecode===500">
+            <h6> Message : Some thing went wrong with server .. Contact us </h6>
+        </div>
+
+
+        <div class="invalid-feedback d-block" *ngIf="reponsecode===504">
+            <h6> Message : EBS connection problem .. Contact us </h6>
+        </div>
+
+
+
+
+
+        <div class="valid-feedback d-block" *ngIf="reponsecode===200">
+
+            <h6> PAN : {{successResponse.ebs_response.PAN}} </h6>
+            <h6> tranAmount : {{successResponse.ebs_response.tranAmount}} </h6>
+            <h6> responseMessage : {{successResponse.ebs_response.responseMessage}} </h6>
+            <h6> tranCurrency : {{successResponse.ebs_response.tranCurrency}} </h6>
+            <h6> responseStatus : {{successResponse.ebs_response.responseStatus}} </h6>
+
+        </div>
+    </div>
+  </ng-template>
