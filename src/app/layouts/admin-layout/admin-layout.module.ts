@@ -19,7 +19,6 @@ import { NoebsApiService } from 'app/services/NoebsApi.service';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { GlobalErrorHandler } from '../../services/GlobalErrorHandler ';
 import { NgxSpinnerModule } from 'ngx-spinner';
-import { MapToIterablePipe } from '../../pages/map-to-iterable.pipe';
 import { IpinEncryptService } from 'app/services/IpinEncrypt.Service';
 import { WorrkingKeyService } from 'app/services/WorkingKey.Service';
 import { TopUpComponent } from 'app/pages/top-up/top-up.component';
@@ -46,8 +45,7 @@ import { BillPaymentComponent } from 'app/pages/bill-payment/bill-payment.compon
     ElectricityComponent,
     TopUpComponent,
     BillInquiryComponent,
-    BillPaymentComponent,
-    MapToIterablePipe
+    BillPaymentComponent
   ]
   ,
   providers: [NoebsApiService ,  WorrkingKeyService , IpinEncryptService ,   {provide: ErrorHandler, useClass: GlobalErrorHandler}],

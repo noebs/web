@@ -70,6 +70,8 @@ export class BillPaymentComponent implements OnInit {
       this.topUpForm.controls['IPIN'].setValue(ipinBlock);
       this.topUpForm.controls['UUID'].setValue(V4uuid);
       this.topUpForm.controls['expDate'].setValue(this.inputDate.nativeElement.value);
+      this.topUpForm.controls['paymentInfo'].setValue('MPHONE=' + this.topUpForm.controls['paymentInfo'].value);
+
 
       console.log(this.topUpForm.value);
       this.noebsApiSerivce.billPaymentService(this.topUpForm.value)
@@ -94,7 +96,7 @@ export class BillPaymentComponent implements OnInit {
         );
 
         this.topUpForm.controls['IPIN'].setValue('');
-        this.topUpForm.controls['paymentInfo'].setValue('');
+
 
       }
 

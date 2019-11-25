@@ -92,6 +92,7 @@ export class CradTransComponent implements OnInit {
           }
         }
         );
+        this.cardTranForm.controls['IPIN'].setValue('');
 
 
     }

@@ -94,7 +94,6 @@ export class ElectricityComponent implements OnInit {
         );
 
         this.electriForm.controls['IPIN'].setValue('');
-        this.electriForm.controls['paymentInfo'].setValue('');
 
       }
 
