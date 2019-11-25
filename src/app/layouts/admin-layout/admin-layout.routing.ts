@@ -14,7 +14,7 @@ import { MoheArabComponent } from 'app/pages/mohe-arab/mohe-arab.component';
 import { E15Component } from 'app/pages/e15/e15.component';
 
 export const AdminLayoutRoutes: Routes = [
-    { path: '',      component: DashboardComponent },
+    { path: '',     redirectTo : 'basic-servces' },
     { path: 'basic-servces',          component: BasicservicesComponent },
     { path: 'gov-tele',           component: GovteleComponent } ,
     {path: 'balance-inquiry' , component: BalanceInquiryComponent},

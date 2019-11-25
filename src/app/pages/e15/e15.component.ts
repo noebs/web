@@ -47,6 +47,7 @@ export class E15Component implements OnInit {
       expDate: ['', Validators.required],
       tranAmount: ['', [Validators.required, Validators.min(1)]],
       paymentInfo: ['', Validators.required],
+      declarantCode: ['', Validators.required],
       IPIN: ['', [Validators.required, Validators.minLength(4), , Validators.maxLength(4)]],
       payeeId: ['0010050001'],
       applicationId: 'ACTSCon',

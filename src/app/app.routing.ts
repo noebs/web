@@ -4,12 +4,9 @@ import { AdminLayoutComponent } from './layouts/admin-layout/admin-layout.compon
 import { LoginComponent } from './landing/login/login.component';
 
 export const AppRoutes: Routes = [
-  {
+ {
     path: '',
-    component: LoginComponent
-  }, {
-    path: 'dashboard',
-    
+
     component: AdminLayoutComponent,
     children: [
         {
@@ -18,6 +15,6 @@ export const AppRoutes: Routes = [
   }]},
   {
     path: '**',
-    redirectTo: 'dashboard'
+    redirectTo: ''
   }
 ]

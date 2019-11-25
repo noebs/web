@@ -6,7 +6,7 @@
                 <li class="breadcrumb-item">
                     <a [routerLink]="['/dashboard/gov-tele']">Gov-Tele Services</a>
                 </li>
-                <li class="breadcrumb-item active" aria-current="page"></li>
+                <li class="breadcrumb-item active" aria-current="page">E15</li>
             </ol>
         </nav>
     </div>
@@ -37,10 +37,10 @@
 
                             <div class="form-group col-12">
                                 <label>Declarant Code</label>
-                                <input type="text" formControlName="paymentInfo" class="form-control" [ngClass]="{ 'is-invalid': e15Form.get('paymentInfo').errors && (e15Form.get('paymentInfo').touched
-                                 || e15Form.get('paymentInfo').dirty)}" />
-                                <div *ngIf="e15Form.get('paymentInfo').errors" class="invalid-feedback">
-                                    <div *ngIf="e15Form.get('paymentInfo').errors.required"> declarantCode Number is required
+                                <input type="text" formControlName="declarantCode" class="form-control" [ngClass]="{ 'is-invalid': e15Form.get('declarantCode').errors && (e15Form.get('declarantCode').touched
+                                 || e15Form.get('declarantCode').dirty)}" />
+                                <div *ngIf="e15Form.get('declarantCode').errors" class="invalid-feedback">
+                                    <div *ngIf="e15Form.get('declarantCode').errors.required"> declarantCode Number is required
                                     </div>
 
                                 </div>

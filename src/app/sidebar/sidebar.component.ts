@@ -9,13 +9,10 @@ export interface RouteInfo {
 }
 
 export const ROUTES: RouteInfo[] = [
-    { path: '/dashboard',     title: 'Personal-Info',         icon:'nc-icon nc-single-02',       class: '' },
-    { path: '/dashboard/basic-servces',         title: 'Basic-Services',             icon:'nc-bank',    class: '' },
-    { path: '/dashboard/gov-tele',          title: 'Goverment&Telecom',              icon:'nc-icon nc-bullet-list-67',      class: '' }
-   // { path: '/dashboard/notifications', title: 'Notifications',     icon:'nc-bell-55',    class: '' },
-    //{ path: '/dashboard/user',          title: 'User Profile',      icon:'nc-single-02',  class: '' },
-    //{ path: '/dashboard/table',         title: 'Table List',        icon:'nc-tile-56',    class: '' },
-    //{ path: '/dashboard/typography',    title: 'Typography',        icon:'nc-caps-small', class: '' }
+   /// { path: '/dashboard',     title: 'Personal-Info',         icon:'nc-icon nc-single-02',       class: '' },
+    { path: '/basic-servces',         title: 'Basic-Services',             icon:'nc-bank',    class: '' },
+    { path: '/gov-tele',          title: 'Goverment&Telecom',              icon:'nc-icon nc-bullet-list-67',      class: '' }
+
     ];
 
 @Component({
