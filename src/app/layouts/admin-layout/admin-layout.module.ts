@@ -15,13 +15,16 @@ import { ElectricityComponent } from '../../pages/electricity/electricity.compon
 import { GovteleComponent }            from '../../pages/gov-tele/govtele.component';
 import { ModalModule } from 'ngx-bootstrap/modal';
 import { BalanceInquiryComponent } from 'app/pages/balance-inquiry/balance-inquiry.component';
-import { BalanceinquiryService } from 'app/services/balanceinquiry.service';
+import { NoebsApiService } from 'app/services/NoebsApi.service';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { GlobalErrorHandler } from '../../services/GlobalErrorHandler ';
 import { NgxSpinnerModule } from 'ngx-spinner';
 import { MapToIterablePipe } from '../../pages/map-to-iterable.pipe';
 import { IpinEncryptService } from 'app/services/IpinEncrypt.Service';
 import { WorrkingKeyService } from 'app/services/WorkingKey.Service';
+import { TopUpComponent } from 'app/pages/top-up/top-up.component';
+import { BillInquiryComponent } from 'app/pages/bill-inquiry/bill-inquiry.component';
+import { BillPaymentComponent } from 'app/pages/bill-payment/bill-payment.component';
 
 
 @NgModule({
@@ -41,10 +44,13 @@ import { WorrkingKeyService } from 'app/services/WorkingKey.Service';
     BalanceInquiryComponent ,
     CradTransComponent,
     ElectricityComponent,
+    TopUpComponent,
+    BillInquiryComponent,
+    BillPaymentComponent,
     MapToIterablePipe
   ]
   ,
-  providers: [BalanceinquiryService ,  WorrkingKeyService , IpinEncryptService ,   {provide: ErrorHandler, useClass: GlobalErrorHandler}],
+  providers: [NoebsApiService ,  WorrkingKeyService , IpinEncryptService ,   {provide: ErrorHandler, useClass: GlobalErrorHandler}],
 
 })
 

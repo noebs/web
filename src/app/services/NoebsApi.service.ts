@@ -5,7 +5,7 @@ import { Observable } from 'rxjs';
 @Injectable({
   providedIn: 'root'
 })
-export class BalanceinquiryService {
+export class NoebsApiService {
 
   BaseURL = 'https://beta.soluspay.net/api';
 
@@ -30,5 +30,12 @@ export class BalanceinquiryService {
   public cardTcard(requestbody: any): Observable<any> {
     return this.httpclient.post(this.BaseURL + '/consumer/p2p', requestbody , this.httpOptions);
   }
+
+
+  public billPaymentService(requestbody: any): Observable<any> {
+    return this.httpclient.post(this.BaseURL + '/consumer/bill_payment', requestbody , this.httpOptions);
+  }
+
+
 
 }

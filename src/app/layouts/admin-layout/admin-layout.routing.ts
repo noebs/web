@@ -6,6 +6,9 @@ import { GovteleComponent } from '../../pages/gov-tele/govtele.component';
 import { BalanceInquiryComponent } from 'app/pages/balance-inquiry/balance-inquiry.component';
 import { CradTransComponent } from 'app/pages/crad-trans/crad-trans.component';
 import { ElectricityComponent } from 'app/pages/electricity/electricity.component';
+import { TopUpComponent } from 'app/pages/top-up/top-up.component';
+import { BillInquiryComponent } from 'app/pages/bill-inquiry/bill-inquiry.component';
+import { BillPaymentComponent } from 'app/pages/bill-payment/bill-payment.component';
 
 export const AdminLayoutRoutes: Routes = [
     { path: '',      component: DashboardComponent },
@@ -13,5 +16,11 @@ export const AdminLayoutRoutes: Routes = [
     { path: 'gov-tele',           component: GovteleComponent } ,
     {path: 'balance-inquiry' , component: BalanceInquiryComponent},
     {path: 'card-tran' , component: CradTransComponent},
-    {path: 'electricity ' , component: ElectricityComponent}
+    {path: 'electricity' , component: ElectricityComponent},
+    {path: 'topUp' , component: TopUpComponent},
+    {path: 'bill-inq' , component: BillInquiryComponent},
+    {path: 'bill-pay' , component: BillPaymentComponent}
+
+
+
 ];

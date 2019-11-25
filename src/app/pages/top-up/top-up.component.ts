@@ -10,13 +10,13 @@ import { IpinEncryptService } from 'app/services/IpinEncrypt.Service';
 import uuidv4 from 'uuid/v4';
 
 @Component({
-  selector: 'app-electricity',
-  templateUrl: './electricity.component.html',
-  styleUrls: ['./electricity.component.scss']
+  selector: 'app-top-up',
+  templateUrl: './top-up.component.html',
+  styleUrls: ['./top-up.component.scss']
 })
-export class ElectricityComponent implements OnInit {
+export class TopUpComponent implements OnInit {
 
-  electriForm: FormGroup;
+  topUpForm: FormGroup;
   error;
   reponsecode;
   successResponse;
@@ -41,15 +41,15 @@ export class ElectricityComponent implements OnInit {
   ngOnInit() {
     let today = moment().format('YYMMDDhhmmss');
 
-    this.electriForm = this.formBuilder.group({
+    this.topUpForm = this.formBuilder.group({
       PAN: ['', [Validators.required, Validators.minLength(16), Validators.maxLength(19)]],
       expDate: ['', Validators.required],
       tranAmount: ['', [Validators.required, Validators.min(1)]],
       paymentInfo: ['', Validators.required],
       IPIN: ['', [Validators.required, Validators.minLength(4), , Validators.maxLength(4)]],
+      payeeId: ['0010010001'],
       applicationId: 'ACTSCon',
       tranDateTime: today,
-      payeeId: '0010020001',
       UUID: null
     });
 
@@ -58,21 +58,20 @@ export class ElectricityComponent implements OnInit {
 
   onSubmit() {
 
-    if (this.electriForm.valid) {
+    if (this.topUpForm.valid) {
       this.spinner.show();
 
       const V4uuid = uuidv4();
 
-      const ipinBlock = this.ipinEnc.encrypt(this.electriForm.get('IPIN').value,
+      const ipinBlock = this.ipinEnc.encrypt(this.topUpForm.get('IPIN').value,
         localStorage.getItem('pubKey'), V4uuid);
 
-      this.electriForm.controls['IPIN'].setValue(ipinBlock);
-      this.electriForm.controls['UUID'].setValue(V4uuid);
-      this.electriForm.controls['expDate'].setValue(this.inputDate.nativeElement.value);
-      this.electriForm.controls['paymentInfo'].setValue('METER=' + this.electriForm.controls['paymentInfo'].value);
+      this.topUpForm.controls['IPIN'].setValue(ipinBlock);
+      this.topUpForm.controls['UUID'].setValue(V4uuid);
+      this.topUpForm.controls['expDate'].setValue(this.inputDate.nativeElement.value);
 
-      console.log(this.electriForm.value);
-      this.noebsApiSerivce.billPaymentService(this.electriForm.value)
+      console.log(this.topUpForm.value);
+      this.noebsApiSerivce.billPaymentService(this.topUpForm.value)
         .subscribe((response) => {
           this.spinner.hide();
           this.successResponse = response;
@@ -93,8 +92,8 @@ export class ElectricityComponent implements OnInit {
         }
         );
 
-        this.electriForm.controls['IPIN'].setValue('');
-        this.electriForm.controls['paymentInfo'].setValue('');
+        this.topUpForm.controls['IPIN'].setValue('');
+        this.topUpForm.controls['paymentInfo'].setValue('');
 
       }
 
