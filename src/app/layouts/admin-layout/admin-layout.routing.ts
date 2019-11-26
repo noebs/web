@@ -12,6 +12,8 @@ import { BillPaymentComponent } from 'app/pages/bill-payment/bill-payment.compon
 import { MoheComponent } from 'app/pages/mohe/mohe.component';
 import { MoheArabComponent } from 'app/pages/mohe-arab/mohe-arab.component';
 import { E15Component } from 'app/pages/e15/e15.component';
+import { CustomsComponent } from 'app/pages/customs/customs.component';
+import { IpinComponent } from 'app/pages/ipin/ipin.component';
 
 export const AdminLayoutRoutes: Routes = [
     { path: '',     redirectTo : 'basic-servces' },
@@ -25,7 +27,10 @@ export const AdminLayoutRoutes: Routes = [
     {path: 'bill-pay' , component: BillPaymentComponent},
     {path: 'mohe' , component: MoheComponent},
     {path: 'mohe-arab' , component: MoheArabComponent},
-    {path: 'e15' , component: E15Component}
+    {path: 'e15' , component: E15Component},
+    {path: 'customs' , component: CustomsComponent},
+    {path: 'ipin' , component: IpinComponent}
+
 
 
 

@@ -10,14 +10,14 @@ import { IpinEncryptService } from 'app/services/IpinEncrypt.Service';
 import uuidv4 from 'uuid/v4';
 
 @Component({
-  selector: 'app-e15',
-  templateUrl: './e15.component.html',
-  styleUrls: ['./e15.component.scss']
+  selector: 'app-customs',
+  templateUrl: './customs.component.html',
+  styleUrls: ['./customs.component.scss']
 })
-export class E15Component implements OnInit {
+export class CustomsComponent implements OnInit {
 
 
-  e15Form: FormGroup;
+  customsForm: FormGroup;
   error;
   reponsecode;
   successResponse;
@@ -42,14 +42,14 @@ export class E15Component implements OnInit {
   ngOnInit() {
     let today = moment().format('YYMMDDhhmmss');
 
-    this.e15Form = this.formBuilder.group({
+    this.customsForm = this.formBuilder.group({
       PAN: ['', [Validators.required, Validators.minLength(16), Validators.maxLength(19)]],
       expDate: ['', Validators.required],
       tranAmount: ['', [Validators.required, Validators.min(1)]],
       paymentInfo: ['', Validators.required],
-      declarantCode: ['', Validators.required],
+      invoiceNumber: ['', Validators.required],
       IPIN: ['', [Validators.required, Validators.minLength(4), , Validators.maxLength(4)]],
-      payeeId: ['0010050001'],
+      payeeId: ['0010030003'],
       applicationId: 'ACTSCon',
       tranDateTime: today,
       UUID: null
@@ -60,23 +60,23 @@ export class E15Component implements OnInit {
 
   onSubmit() {
 
-    if (this.e15Form.valid) {
+    if (this.customsForm.valid) {
       this.spinner.show();
 
       const V4uuid = uuidv4();
 
-      const ipinBlock = this.ipinEnc.encrypt(this.e15Form.get('IPIN').value,
+      const ipinBlock = this.ipinEnc.encrypt(this.customsForm.get('IPIN').value,
         localStorage.getItem('pubKey'), V4uuid);
 
-      this.e15Form.controls['IPIN'].setValue(ipinBlock);
-      this.e15Form.controls['UUID'].setValue(V4uuid);
-      this.e15Form.controls['expDate'].setValue(this.inputDate.nativeElement.value);
-      this.e15Form.controls['paymentInfo'].setValue( this.e15Form.controls['paymentInfo'].value
-       + '/' + this.e15Form.controls['declarantCode'].value);
+      this.customsForm.controls['IPIN'].setValue(ipinBlock);
+      this.customsForm.controls['UUID'].setValue(V4uuid);
+      this.customsForm.controls['expDate'].setValue(this.inputDate.nativeElement.value);
+      this.customsForm.controls['paymentInfo'].setValue( this.customsForm.controls['paymentInfo'].value
+       + '/' + this.customsForm.controls['invoiceNumber'].value);
 
 
-      console.log(this.e15Form.value);
-      this.noebsApiSerivce.billPaymentService(this.e15Form.value)
+      console.log(this.customsForm.value);
+      this.noebsApiSerivce.billPaymentService(this.customsForm.value)
         .subscribe((response) => {
           this.spinner.hide();
           this.successResponse = response;
@@ -97,7 +97,7 @@ export class E15Component implements OnInit {
         }
         );
 
-        this.e15Form.controls['IPIN'].setValue('');
+        this.customsForm.controls['IPIN'].setValue('');
 
 
       }
