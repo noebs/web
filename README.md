@@ -1,4 +1,4 @@
-# soluswebportel
+# Solus Web Portal
 
 # Deployment Guides
 
