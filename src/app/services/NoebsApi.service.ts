@@ -7,7 +7,7 @@ import { Observable } from 'rxjs';
 })
 export class NoebsApiService {
 
-  BaseURL = 'https://beta.soluspay.net/api';
+  BaseURL = 'http://192.168.20.20:8080';
 
 
    httpOptions = {

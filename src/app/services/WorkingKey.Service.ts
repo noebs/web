@@ -7,7 +7,7 @@ import * as uuid from 'uuid';
 @Injectable({providedIn: 'root'})
 export class WorrkingKeyService {
 
-  BaseURL = 'https://beta.soluspay.net/api';
+  BaseURL = 'http://192.168.20.20:8080';
 
   httpOptions = {
    headers: new HttpHeaders({
