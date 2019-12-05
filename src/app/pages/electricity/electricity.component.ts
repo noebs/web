@@ -69,7 +69,8 @@ export class ElectricityComponent implements OnInit {
       this.electriForm.controls['IPIN'].setValue(ipinBlock);
       this.electriForm.controls['UUID'].setValue(V4uuid);
       this.electriForm.controls['expDate'].setValue(this.inputDate.nativeElement.value);
-      this.electriForm.controls['paymentInfo'].setValue('METER=' + this.electriForm.controls['paymentInfo'].value);
+      const meter = this.electriForm.controls['paymentInfo'].value;
+      this.electriForm.controls['paymentInfo'].setValue('METER=' + meter);
 
       console.log(this.electriForm.value);
       this.noebsApiSerivce.billPaymentService(this.electriForm.value)
@@ -93,6 +94,7 @@ export class ElectricityComponent implements OnInit {
         }
         );
 
+        this.electriForm.controls['paymentInfo'].setValue(meter);
         this.electriForm.controls['IPIN'].setValue('');
 
       }
