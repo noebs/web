@@ -91,6 +91,7 @@ export class BalanceInquiryComponent implements OnInit {
             this.error = err;
             console.log(this.error);
 
+            this.balanceInquiryForm.controls['IPIN'].setValue('');
 
           }
         }
