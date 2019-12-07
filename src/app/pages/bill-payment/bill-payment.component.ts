@@ -40,7 +40,7 @@ export class BillPaymentComponent implements OnInit {
     private noebsApiSerivce: NoebsApiService) { }
 
   ngOnInit() {
-    let today = moment().format('YYMMDDhhmmss');
+    const today = moment().format('YYMMDDhhmmss');
 
     this.topUpForm = this.formBuilder.group({
       PAN: ['', [Validators.required, Validators.minLength(16), Validators.maxLength(19)]],
@@ -70,7 +70,8 @@ export class BillPaymentComponent implements OnInit {
       this.topUpForm.controls['IPIN'].setValue(ipinBlock);
       this.topUpForm.controls['UUID'].setValue(V4uuid);
       this.topUpForm.controls['expDate'].setValue(this.inputDate.nativeElement.value);
-      this.topUpForm.controls['paymentInfo'].setValue('MPHONE=' + this.topUpForm.controls['paymentInfo'].value);
+       const phone = this.topUpForm.controls['paymentInfo'].value;
+      this.topUpForm.controls['paymentInfo'].setValue('MPHONE=' + phone);
 
 
       console.log(this.topUpForm.value);
@@ -95,6 +96,7 @@ export class BillPaymentComponent implements OnInit {
         }
         );
 
+        this.topUpForm.controls['paymentInfo'].setValue(phone);
         this.topUpForm.controls['IPIN'].setValue('');
 
 

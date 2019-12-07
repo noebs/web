@@ -32,6 +32,7 @@ import { IpinComponent } from 'app/pages/ipin/ipin.component';
 
 
 @NgModule({
+
   imports: [
     FormsModule,
     ReactiveFormsModule,
@@ -62,4 +63,7 @@ import { IpinComponent } from 'app/pages/ipin/ipin.component';
 
 })
 
-export class AdminLayoutModule {}
+export class AdminLayoutModule {
+
+
+}

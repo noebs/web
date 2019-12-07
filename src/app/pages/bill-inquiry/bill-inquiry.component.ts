@@ -69,7 +69,8 @@ export class BillInquiryComponent implements OnInit {
       this.topUpForm.controls['IPIN'].setValue(ipinBlock);
       this.topUpForm.controls['UUID'].setValue(V4uuid);
       this.topUpForm.controls['expDate'].setValue(this.inputDate.nativeElement.value);
-      this.topUpForm.controls['paymentInfo'].setValue('MPHONE=' + this.topUpForm.controls['paymentInfo'].value);
+      const phone = this.topUpForm.controls['paymentInfo'].value;
+      this.topUpForm.controls['paymentInfo'].setValue('MPHONE=' + phone);
 
 
       console.log(this.topUpForm.value);
@@ -94,6 +95,7 @@ export class BillInquiryComponent implements OnInit {
         }
         );
 
+        this.topUpForm.controls['paymentInfo'].setValue(phone);
         this.topUpForm.controls['IPIN'].setValue('');
       }
 
