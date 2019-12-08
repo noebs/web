@@ -90,15 +90,9 @@ export class BalanceInquiryComponent implements OnInit {
             this.modalRef = this.modalService.show(this.template, this.modalconfig);
             this.error = err;
             console.log(this.error);
-
-
           }
         }
         );
-
-
     }
-
-
   }
 }
