@@ -8,7 +8,8 @@ import { NgxSpinnerService } from 'ngx-spinner';
 import * as moment from 'moment';
 import { IpinEncryptService } from 'app/services/IpinEncrypt.Service';
 import uuidv4 from 'uuid/v4';
-
+import * as jspdf from 'jspdf';
+import html2canvas from 'html2canvas';
 
 
 
@@ -101,5 +102,22 @@ export class BalanceInquiryComponent implements OnInit {
     }
 
 
+  }
+  public captureScreen() {
+
+    var data = document.getElementById('contentToConvert');
+    html2canvas(data).then(canvas => {
+      // Few necessary setting options
+      var imgWidth = 100;
+      var pageHeight = 150;
+      var imgHeight = canvas.height * imgWidth / canvas.width;
+      var heightLeft = imgHeight;
+
+      const contentDataURL = canvas.toDataURL('image/png')
+      let pdf = new jspdf('p', 'mm', 'a6'); // A4 size page of PDF
+      var position = 40;
+      pdf.addImage(contentDataURL, 'PNG', 10, position, imgWidth, imgHeight)
+      pdf.save('MYPdf.pdf'); // Generated PDF
+    });
   }
 }
