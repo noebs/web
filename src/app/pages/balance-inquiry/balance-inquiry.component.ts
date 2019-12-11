@@ -99,8 +99,11 @@ export class BalanceInquiryComponent implements OnInit {
         );
     }
   }
-  public captureScreen() {
 
+  // i don't like this function, it is a hack
+  // but it works really *well* though
+  // i will add facebook share and other stuff to make it more mobile friendly
+  public captureScreen() {
     var data = document.getElementById('contentToConvert');
     html2canvas(data).then(canvas => {
       // Few necessary setting options
@@ -113,7 +116,11 @@ export class BalanceInquiryComponent implements OnInit {
       let pdf = new jspdf('p', 'mm', 'a6'); // A4 size page of PDF
       var position = 40;
       pdf.addImage(contentDataURL, 'PNG', 10, position, imgWidth, imgHeight)
-      pdf.save('MYPdf.pdf'); // Generated PDF
+      
+      // generate the current time
+      var d = new Date()
+
+      pdf.save("transaction_" + d.getDate() + d.getHours() + d.getMinutes() + ".pdf"); // Generated PDF
     });
   }
 }
