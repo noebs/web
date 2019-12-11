@@ -7,7 +7,7 @@ import * as uuid from 'uuid';
 @Injectable({providedIn: 'root'})
 export class WorrkingKeyService {
 
-  BaseURL = 'http://192.168.20.20:8080';
+  BaseURL = 'https://beta.soluspay.net/api/consumer';
 
   httpOptions = {
    headers: new HttpHeaders({
@@ -20,7 +20,7 @@ export class WorrkingKeyService {
   constructor(private httpClient: HttpClient) { }
 
   public getKey(applicationId , tranDateTime): Observable<any> {
-    return this.httpClient.post(this.BaseURL + '/consumer/key', {applicationId: applicationId ,  tranDateTime: tranDateTime ,
+    return this.httpClient.post(this.BaseURL + '/key', {applicationId: applicationId ,  tranDateTime: tranDateTime ,
     UUID: this.uuid } , this.httpOptions);
   }
 

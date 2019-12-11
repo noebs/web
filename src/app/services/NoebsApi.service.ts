@@ -6,8 +6,8 @@ import { Observable } from 'rxjs';
   providedIn: 'root'
 })
 export class NoebsApiService {
-
-  BaseURL = 'http://192.168.20.20:8080';
+// http://192.168.20.20:8080
+  BaseURL = 'https://beta.soluspay.net/api/consumer';
 
 
    httpOptions = {
@@ -23,17 +23,17 @@ export class NoebsApiService {
  :any  */
 
  public balanceInquiry(requestbody: any): Observable<any> {
-    return this.httpclient.post(this.BaseURL + '/consumer/balance', requestbody , this.httpOptions);
+    return this.httpclient.post(this.BaseURL + '/balance', requestbody , this.httpOptions);
   }
 
 
   public cardTcard(requestbody: any): Observable<any> {
-    return this.httpclient.post(this.BaseURL + '/consumer/p2p', requestbody , this.httpOptions);
+    return this.httpclient.post(this.BaseURL + '/p2p', requestbody , this.httpOptions);
   }
 
 
   public billPaymentService(requestbody: any): Observable<any> {
-    return this.httpclient.post(this.BaseURL + '/consumer/bill_payment', requestbody , this.httpOptions);
+    return this.httpclient.post(this.BaseURL + '/bill_payment', requestbody , this.httpOptions);
   }
 
 

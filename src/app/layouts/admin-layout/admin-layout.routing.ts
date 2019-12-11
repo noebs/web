@@ -16,8 +16,8 @@ import { CustomsComponent } from 'app/pages/customs/customs.component';
 import { IpinComponent } from 'app/pages/ipin/ipin.component';
 
 export const AdminLayoutRoutes: Routes = [
-    { path: '',     redirectTo : 'basic-servces' },
-    { path: 'basic-servces',          component: BasicservicesComponent },
+    { path: '',     redirectTo : 'basic-services' },
+    { path: 'basic-services',          component: BasicservicesComponent },
     { path: 'gov-tele',           component: GovteleComponent } ,
     {path: 'balance-inquiry' , component: BalanceInquiryComponent},
     {path: 'card-tran' , component: CradTransComponent},
