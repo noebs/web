@@ -80,7 +80,7 @@ export class BalanceInquiryComponent implements OnInit {
         .subscribe((response) => {
           this.spinner.hide();
           this.successResponse = response;
-          this.reponsecode = 200;
+          this.reponsecode = 200; // why hardcoding this
           console.log(response);
           this.modalRef = this.modalService.show(this.template, this.modalconfig);
         }, (err) => {

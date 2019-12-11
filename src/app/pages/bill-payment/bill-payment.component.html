@@ -165,6 +165,7 @@
     <div class="modal-body">
 
         <div class="invalid-feedback d-block" *ngIf="reponsecode===502">
+            <h6>Transaction Time: {{error.error.details.tranDateTime}}</h6>
 
             <h6> responseMessage : {{error.error.details.responseMessage}} </h6>
             <h6> responseStatus : {{error.error.details.responseStatus}} </h6>
@@ -194,6 +195,7 @@
 
 
         <div class="valid-feedback d-block" *ngIf="reponsecode===200">
+                <h6>Transaction Time: {{successResponse.ebs_response.tranDateTime}}</h6>
 
             <h6> PAN : {{successResponse.ebs_response.PAN}} </h6>
             <h6> tranAmount : {{successResponse.ebs_response.tranAmount}} </h6>
