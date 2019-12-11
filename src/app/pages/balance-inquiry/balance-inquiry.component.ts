@@ -91,12 +91,9 @@ export class BalanceInquiryComponent implements OnInit {
             this.modalRef = this.modalService.show(this.template, this.modalconfig);
             this.error = err;
             console.log(this.error);
-<<<<<<< HEAD
 
             this.balanceInquiryForm.controls['IPIN'].setValue('');
 
-=======
->>>>>>> e057c1622f900d41a790f27d1c3d4b9e349da1a9
           }
         }
         );
