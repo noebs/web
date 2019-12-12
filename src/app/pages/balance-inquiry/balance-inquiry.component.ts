@@ -10,6 +10,7 @@ import { IpinEncryptService } from 'app/services/IpinEncrypt.Service';
 import uuidv4 from 'uuid/v4';
 import * as jspdf from 'jspdf';
 import html2canvas from 'html2canvas';
+import { stringify } from 'querystring';
 
 
 
@@ -81,12 +82,20 @@ export class BalanceInquiryComponent implements OnInit {
           this.spinner.hide();
           this.successResponse = response;
           this.reponsecode = 200; // why hardcoding this
+          let id = Date.now()
+          localStorage.setItem(id.toString() , stringify(response.ebs_response))
+
           console.log(response);
           this.modalRef = this.modalService.show(this.template, this.modalconfig);
         }, (err) => {
           this.spinner.hide();
           this.reponsecode = err.status;
           console.log(err);
+          // save to localStorage
+          let id = Date.now()
+          localStorage.setItem(id.toString() , stringify(err.error.details))
+          console.log("the error is: ", stringify(err.error.details))
+          //
           if (err instanceof HttpErrorResponse) {
             this.modalRef = this.modalService.show(this.template, this.modalconfig);
             this.error = err;
