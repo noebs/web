@@ -84,21 +84,17 @@
 <div class="form-group col-12">
 <ng-template #template>
     <div class="modal-header">
-        <input type="button" class="btn btn-primary btn-sm" value="📎 Save Receipt as PDF" (click)="captureScreen()"/>
         <h4 class="modal-title pull-left" style="color: #dc3545" *ngIf="reponsecode===502 || reponsecode===504
         ||reponsecode===500 || reponsecode===0">error</h4>
         <h4 class="modal-title pull-left" style="color: #28a745" *ngIf="reponsecode===200">success</h4>
         <button type="button" class="close pull-right" aria-label="Close" (click)="modalRef.hide()">
             <span aria-hidden="true">&times;</span>
         </button>
-
-
-
     </div>
     <div class="modal-body">
 
         <div class="invalid-feedback d-block" *ngIf="reponsecode===502" id="contentToConvert">
-                <h6>Transaction Time: {{error.error.details.tranDateTime}}</h6>
+            <h6>Transaction Time: {{error.error.details.tranDateTime}}</h6>
 
             <h6> responseMessage : {{error.error.details.responseMessage}} </h6>
             <h6> responseStatus : {{error.error.details.responseStatus}} </h6>
@@ -123,10 +119,6 @@
             <h6> Message : EBS connection problem .. Contact us </h6>
         </div>
 
-
-
-
-
         <div class="valid-feedback d-block" *ngIf="reponsecode===200" id="contentToConvert">
                 <h6> Transaction Time : {{successResponse.ebs_response.tranDateTime}} </h6>
             
@@ -139,6 +131,10 @@
         </div>
     </div>
 
-
+    <!--Modal footer (for save button and other actions-->
+    <div class="modal-footer">
+        <input type="button" class="btn btn-primary btn-sm" value="📎 Save Receipt as PDF" (click)="captureScreen()"/>
+        <!--TODO add ability to save to local storage-->
+    </div>
 </ng-template>
 </div>

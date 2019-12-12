@@ -123,4 +123,20 @@ export class BalanceInquiryComponent implements OnInit {
       pdf.save("transaction_" + d.getDate() + d.getHours() + d.getMinutes() + ".pdf"); // Generated PDF
     });
   }
+
+  // This allows the user in the response modal
+  // to store the transaction in the local storage 
+  public saveStorage(){
+    var j = {
+      "tranDateTime": ""  // ideally, we want this to look as following
+      /*
+      "tranDateTime": this.getTranDateTime(),
+      "responseStatus": this.getResponseStatus()
+      and these values are received from the response object
+      */
+    }
+    
+    // replace me with real value
+    localStorage.setItem("transaction", "")
+  }
 }
