@@ -1,0 +1,47 @@
+<div class="row">
+    <div class="col-md-12">
+
+        <nav aria-label="breadcrumb" role="navigation">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item">
+                    <a [routerLink]="['/gov-tele']">Gov-Tele Services</a>
+                </li>
+                <li class="breadcrumb-item active" aria-current="page">Recent Transactions</li>
+            </ol>
+        </nav>
+    </div>
+    <div class="col-md-12">
+        <div class="card">
+            <div class="card-header">
+                <div class="card-body">
+                    <div class="text-center">
+                        <h3>Your Transactions are:</h3>
+                        <!--list of items 
+                        where we use *ngfor
+                        items are key - value pair-->
+                        <table align="left">
+                            <tr>
+                                <th>Time</th>
+                                <th>Message</th>
+                                <th>Status</th>
+                                <th>Transaction ID</th>
+                            </tr>
+                            <tr *ngFor="let transaction of getStorage">
+                                <td>{{ transaction.tranDateTime}}</td>
+                                <td>{{ transaction.responseStatus}}</td>
+                                <td>{{ transaction.responseStatus}}</td>
+                                <td>{{transaction.UUID}}</td>
+                            </tr>
+                        </table>
+
+                    </div>
+                </div>
+
+            </div>
+            <div class="card-footer">
+                <input type="button" class="btn btn-primary btn-sm" value="📎 Download All Transactions"
+                    (click)="downloadCSV()" />
+            </div>
+        </div>
+    </div>
+</div>
