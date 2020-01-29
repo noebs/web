@@ -2,9 +2,13 @@
 .card label {
   font-size: 0.8571em;
   margin-bottom: 5px;
-  color:
-  #1a1a1a;
+  color: #1a1a1a;
 }
 .form-check .form-check-label {
   padding-left: 15px;
+}
+
+@font-face {
+  font-family: kredit;
+  src: url(/assets/fonts/kredits.ttf) format("truetype");
 }

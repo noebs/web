@@ -1,180 +1,170 @@
 <div class="row">
-  <div class="col-md-12">
+    <div class="col-md-12">
 
-      <nav aria-label="breadcrumb" role="navigation">
-          <ol class="breadcrumb">
-              <li class="breadcrumb-item">
-                  <a [routerLink]="['/dashboard/basic-servces']">BasicServices</a>
-              </li>
-              <li class="breadcrumb-item active" aria-current="page">CardTransfer</li>
-          </ol>
-      </nav>
-  </div>
-  <div class="col-md-12">
-      <div class="card">
-          <div class="card-header">
-              <div class="card-body">
-                  <form [formGroup]="cardTranForm" (ngSubmit)="onSubmit()">
-                      <div class="form-row">
+        <nav aria-label="breadcrumb" role="navigation">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item">
+                    <a [routerLink]="['/dashboard/basic-servces']">BasicServices</a>
+                </li>
+                <li class="breadcrumb-item active" aria-current="page">CardTransfer</li>
+            </ol>
+        </nav>
+    </div>
+    <div class="col-md-12">
+        <div class="card">
+            <div class="card-header">
+                <div class="card-body">
+                    <form [formGroup]="cardTranForm" (ngSubmit)="onSubmit()" autocomplete="on">
+                        <div class="form-row">
 
-                          <div class="form-group col-12">
-                              <label>Receiver Card Number</label>
-                              <input type="text" formControlName="toCard" class="form-control" [ngClass]="{ 'is-invalid': cardTranForm.get('toCard').errors && (cardTranForm.get('toCard').touched
+                            <div class="form-group col-12">
+                                <label>Receiver Card Number</label>
+                                <input font-family="consolas" type="text" formControlName="toCard" class="form-control"
+                                    [ngClass]="{ 'is-invalid': cardTranForm.get('toCard').errors && (cardTranForm.get('toCard').touched
                                || cardTranForm.get('PAN').dirty)}" />
-                              <div *ngIf="cardTranForm.get('toCard').errors" class="invalid-feedback">
-                                  <div *ngIf="cardTranForm.get('toCard').errors.required">Card Number is required
-                                  </div>
-                                  <div
-                                      *ngIf="cardTranForm.get('toCard').errors.minlength ||  cardTranForm.get('toCard').errors.maxlength">
-                                      card number must be 16 or 19 characters</div>
-                              </div>
-                          </div>
-                      </div>
-
-
-
-
-
-                      <div class="form-row">
-                          <div class="form-group col-12">
-                            <label>Sender Card Number</label>
-                            <input type="text" formControlName="PAN" class="form-control" [ngClass]="{ 'is-invalid': cardTranForm.get('PAN').errors && (cardTranForm.get('PAN').touched
-                             || cardTranForm.get('PAN').dirty)}" />
-                            <div *ngIf="cardTranForm.get('PAN').errors" class="invalid-feedback">
-                                <div *ngIf="cardTranForm.get('PAN').errors.required">Card Number is required
+                                <div *ngIf="cardTranForm.get('toCard').errors" class="invalid-feedback">
+                                    <div *ngIf="cardTranForm.get('toCard').errors.required">Card Number is required
+                                    </div>
+                                    <div
+                                        *ngIf="cardTranForm.get('toCard').errors.minlength ||  cardTranForm.get('toCard').errors.maxlength">
+                                        card number must be 16 or 19 characters</div>
                                 </div>
-                                <div
-                                    *ngIf="cardTranForm.get('PAN').errors.minlength ||  cardTranForm.get('PAN').errors.maxlength">
-                                    card number must be 16 or 19 characters</div>
                             </div>
                         </div>
-                      </div>
+                        <div class="form-row">
+                            <div class="form-group col-12">
+                                <label>Sender Card Number</label>
+                                <input font-family="consolas" type="text" formControlName="PAN" class="form-control"
+                                    [ngClass]="{ 'is-invalid': cardTranForm.get('PAN').errors && (cardTranForm.get('PAN').touched
+                             || cardTranForm.get('PAN').dirty)}" />
+                                <div *ngIf="cardTranForm.get('PAN').errors" class="invalid-feedback">
+                                    <div *ngIf="cardTranForm.get('PAN').errors.required">Card Number is required
+                                    </div>
+                                    <div
+                                        *ngIf="cardTranForm.get('PAN').errors.minlength ||  cardTranForm.get('PAN').errors.maxlength">
+                                        card number must be 16 or 19 characters</div>
+                                </div>
+                            </div>
+                        </div>
 
-
-
-
+                        <div class="form-row">
+                            <div class="form-group col-12">
+                                <label>Expiry Date</label>
+                                <input #expDatePick type="text" bsDatepicker
+                                    [bsConfig]="{dateInputFormat: 'YYMM' , minMode: 'month'}" #dp="bsDatepicker"
+                                    formControlName="expDate" class="form-control" [ngClass]="{ 'is-invalid': cardTranForm.get('expDate').errors && (cardTranForm.get('expDate').touched
+                              || cardTranForm.get('expDate').dirty) }" />
+                                <div *ngIf="cardTranForm.get('expDate').errors" class="invalid-feedback">
+                                    <div *ngIf="cardTranForm.get('expDate').errors.required"> Expiry date is
+                                        required</div>
+                                </div>
+                            </div>
+                        </div>
 
 
 
                         <div class="form-row">
-                          <div class="form-group col-12">
-                              <label>Expiry Date</label>
-                              <input #expDatePick type="text" bsDatepicker
-                                  [bsConfig]="{dateInputFormat: 'YYMM' , minMode: 'month'}" #dp="bsDatepicker"
-                                  formControlName="expDate" class="form-control" [ngClass]="{ 'is-invalid': cardTranForm.get('expDate').errors && (cardTranForm.get('expDate').touched
-                              || cardTranForm.get('expDate').dirty) }" />
-                              <div *ngIf="cardTranForm.get('expDate').errors" class="invalid-feedback">
-                                  <div *ngIf="cardTranForm.get('expDate').errors.required"> Expiry date is
-                                      required</div>
-                              </div>
-                          </div>
-                      </div>
-
-
-
-                      <div class="form-row">
-                       <div class="form-group col-12">
-                          <label>Amount</label>
-                          <input type="number" formControlName="tranAmount" class="form-control" [ngClass]="{ 'is-invalid': cardTranForm.get('tranAmount').errors && (cardTranForm.get('tranAmount').touched
+                            <div class="form-group col-12">
+                                <label>Amount</label>
+                                <input type="number" formControlName="tranAmount" class="form-control" [ngClass]="{ 'is-invalid': cardTranForm.get('tranAmount').errors && (cardTranForm.get('tranAmount').touched
                            || cardTranForm.get('tranAmount').dirty)}" />
-                          <div *ngIf="cardTranForm.get('tranAmount').errors" class="invalid-feedback">
-                              <div *ngIf="cardTranForm.get('tranAmount').errors.required"> tranAmount is required
-                              </div>
-                              <div
-                                  *ngIf="cardTranForm.get('tranAmount').errors.min">
-                                  invalid amount </div>
-                          </div>
-                      </div>
-                      </div>
+                                <div *ngIf="cardTranForm.get('tranAmount').errors" class="invalid-feedback">
+                                    <div *ngIf="cardTranForm.get('tranAmount').errors.required"> tranAmount is required
+                                    </div>
+                                    <div *ngIf="cardTranForm.get('tranAmount').errors.min">
+                                        invalid amount </div>
+                                </div>
+                            </div>
+                        </div>
 
 
 
-                      <div class="form-row">
-                          <div class="form-group col-12">
-                              <label>IPIN</label>
-                              <input type="password" formControlName="IPIN" class="form-control" [ngClass]="{ 'is-invalid': cardTranForm.get('IPIN').errors && (cardTranForm.get('IPIN').touched
+                        <div class="form-row">
+                            <div class="form-group col-12">
+                                <label>IPIN</label>
+                                <input type="password" formControlName="IPIN" class="form-control" [ngClass]="{ 'is-invalid': cardTranForm.get('IPIN').errors && (cardTranForm.get('IPIN').touched
                               || cardTranForm.get('IPIN').dirty)}" />
-                              <div *ngIf="cardTranForm.get('IPIN').errors" class="invalid-feedback">
-                                  <div *ngIf="cardTranForm.get('IPIN').errors.required">IPIN is required</div>
-                                  <div *ngIf="cardTranForm.get('IPIN').errors.minlength">IPIN must be 4
-                                      characters</div>
-                                  <div *ngIf="cardTranForm.get('IPIN').errors.maxlength">IPIN must be 4
-                                      characters</div>
+                                <div *ngIf="cardTranForm.get('IPIN').errors" class="invalid-feedback">
+                                    <div *ngIf="cardTranForm.get('IPIN').errors.required">IPIN is required</div>
+                                    <div *ngIf="cardTranForm.get('IPIN').errors.minlength">IPIN must be 4
+                                        characters</div>
+                                    <div *ngIf="cardTranForm.get('IPIN').errors.maxlength">IPIN must be 4
+                                        characters</div>
 
-                              </div>
-                          </div>
+                                </div>
+                            </div>
 
-                      </div>
+                        </div>
 
-                      <div class="text-center">
-                          <button class="btn btn-primary">Submit</button>
-                      </div>
-                  </form>
-              </div>
-          </div>
-      </div>
-  </div>
+                        <div class="text-center">
+                            <button class="btn btn-primary">Submit</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
 
 
 
 <ngx-spinner bdColor="rgba(51,51,51,0.8)" size="medium" color="#fca0a0" type="ball-clip-rotate-multiple">
 
-  <p style="font-size: 20px; color: white">Loading...</p>
+    <p style="font-size: 20px; color: white">Loading...</p>
 </ngx-spinner>
 
 
 
 
 <ng-template #template>
-  <div class="modal-header">
-      <h4 class="modal-title pull-left" style="color: #dc3545" *ngIf="reponsecode===502 || reponsecode===504
+    <div class="modal-header">
+        <h4 class="modal-title pull-left" style="color: #dc3545" *ngIf="reponsecode===502 || reponsecode===504
       ||reponsecode===500 || reponsecode===0">error</h4>
-      <h4 class="modal-title pull-left" style="color: #28a745" *ngIf="reponsecode===200">success</h4>
-      <button type="button" class="close pull-right" aria-label="Close" (click)="modalRef.hide()">
-          <span aria-hidden="true">&times;</span>
-      </button>
-  </div>
-  <div class="modal-body">
+        <h4 class="modal-title pull-left" style="color: #28a745" *ngIf="reponsecode===200">success</h4>
+        <button type="button" class="close pull-right" aria-label="Close" (click)="modalRef.hide()">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+    <div class="modal-body">
 
-      <div class="invalid-feedback d-block" *ngIf="reponsecode===502">
+        <div class="invalid-feedback d-block" *ngIf="reponsecode===502">
             <h6>Transaction Time: {{error.error.details.tranDateTime}}</h6>
 
-          <h6> responseMessage : {{error.error.details.responseMessage}} </h6>
-          <h6> responseStatus : {{error.error.details.responseStatus}} </h6>
-          <h6> tranCurrency : {{error.error.details.tranCurrency}} </h6>
-          <h6> PAN : {{error.error.details.PAN}} </h6>
-          <h6> responseCode : {{error.error.details.responseCode}} </h6>
+            <h6> responseMessage : {{error.error.details.responseMessage}} </h6>
+            <h6> responseStatus : {{error.error.details.responseStatus}} </h6>
+            <h6> tranCurrency : {{error.error.details.tranCurrency}} </h6>
+            <h6> PAN : {{error.error.details.PAN}} </h6>
+            <h6> responseCode : {{error.error.details.responseCode}} </h6>
 
-      </div>
-
-
-      <div class="invalid-feedback d-block" *ngIf="reponsecode===0">
-          <h6> Message : Please check your internt connection </h6>
-      </div>
+        </div>
 
 
-      <div class="invalid-feedback d-block" *ngIf="reponsecode===500">
-          <h6> Message : Some thing went wrong with server .. Contact us </h6>
-      </div>
+        <div class="invalid-feedback d-block" *ngIf="reponsecode===0">
+            <h6> Message : Please check your internt connection </h6>
+        </div>
 
 
-      <div class="invalid-feedback d-block" *ngIf="reponsecode===504">
-          <h6> Message : EBS connection problem .. Contact us </h6>
-      </div>
+        <div class="invalid-feedback d-block" *ngIf="reponsecode===500">
+            <h6> Message : Some thing went wrong with server .. Contact us </h6>
+        </div>
 
 
+        <div class="invalid-feedback d-block" *ngIf="reponsecode===504">
+            <h6> Message : EBS connection problem .. Contact us </h6>
+        </div>
 
 
 
-      <div class="valid-feedback d-block" *ngIf="reponsecode===200">
+
+
+        <div class="valid-feedback d-block" *ngIf="reponsecode===200">
             <h6> Transaction Time : {{successResponse.ebs_response.tranDateTime}} </h6>
-          <h6> PAN : {{successResponse.ebs_response.PAN}} </h6>
-          <h6> tranAmount : {{successResponse.ebs_response.tranAmount}} </h6>
-          <h6> responseMessage : {{successResponse.ebs_response.responseMessage}} </h6>
-          <h6> tranCurrency : {{successResponse.ebs_response.tranCurrency}} </h6>
-          <h6> responseStatus : {{successResponse.ebs_response.responseStatus}} </h6>
+            <h6> PAN : {{successResponse.ebs_response.PAN}} </h6>
+            <h6> tranAmount : {{successResponse.ebs_response.tranAmount}} </h6>
+            <h6> responseMessage : {{successResponse.ebs_response.responseMessage}} </h6>
+            <h6> tranCurrency : {{successResponse.ebs_response.tranCurrency}} </h6>
+            <h6> responseStatus : {{successResponse.ebs_response.responseStatus}} </h6>
 
-      </div>
-  </div>
+        </div>
+    </div>
 </ng-template>

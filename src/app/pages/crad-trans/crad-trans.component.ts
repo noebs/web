@@ -69,7 +69,7 @@ export class CradTransComponent implements OnInit {
         ]
       ],
       expDate: ["", Validators.required],
-      tranAmount: ["", [Validators.required, Validators.min(1)]],
+      tranAmount: ["", [Validators.required, Validators.min(0.01)]],
 
       IPIN: [
         "",
