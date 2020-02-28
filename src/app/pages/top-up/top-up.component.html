@@ -4,7 +4,7 @@
         <nav aria-label="breadcrumb" role="navigation">
             <ol class="breadcrumb">
                 <li class="breadcrumb-item">
-                  <a [routerLink]="['/gov-tele']">Gov-Tele Services</a>
+                    <a [routerLink]="['/gov-tele']">Gov-Tele Services</a>
                 </li>
                 <li class="breadcrumb-item active" aria-current="page">TopUp</li>
             </ol>
@@ -20,17 +20,17 @@
 
                         <div class="form-row">
                             <div class="form-group col-12">
-                              <label> Card Number</label>
-                              <input type="text" formControlName="PAN" class="form-control" [ngClass]="{ 'is-invalid': topUpForm.get('PAN').errors && (topUpForm.get('PAN').touched
+                                <label> Card Number</label>
+                                <input type="text" formControlName="PAN" class="form-control" [ngClass]="{ 'is-invalid': topUpForm.get('PAN').errors && (topUpForm.get('PAN').touched
                                || topUpForm.get('PAN').dirty)}" />
-                              <div *ngIf="topUpForm.get('PAN').errors" class="invalid-feedback">
-                                  <div *ngIf="topUpForm.get('PAN').errors.required">Card Number is required
-                                  </div>
-                                  <div
-                                      *ngIf="topUpForm.get('PAN').errors.minlength ||  topUpForm.get('PAN').errors.maxlength">
-                                      card number must be 16 or 19 characters</div>
-                              </div>
-                          </div>
+                                <div *ngIf="topUpForm.get('PAN').errors" class="invalid-feedback">
+                                    <div *ngIf="topUpForm.get('PAN').errors.required">Card Number is required
+                                    </div>
+                                    <div
+                                        *ngIf="topUpForm.get('PAN').errors.minlength ||  topUpForm.get('PAN').errors.maxlength">
+                                        card number must be 16 or 19 characters</div>
+                                </div>
+                            </div>
 
 
 
@@ -58,62 +58,65 @@
 
 
 
-                          <div class="form-group col-12">
-                             <label>Phone Number</label>
-                             <input type="text" formControlName="paymentInfo" class="form-control" [ngClass]="{ 'is-invalid': topUpForm.get('paymentInfo').errors && (topUpForm.get('paymentInfo').touched
+                            <div class="form-group col-12">
+                                <label>Phone Number</label>
+                                <input type="text" formControlName="paymentInfo" class="form-control" [ngClass]="{ 'is-invalid': topUpForm.get('paymentInfo').errors && (topUpForm.get('paymentInfo').touched
                               || topUpForm.get('paymentInfo').dirty)}" />
-                             <div *ngIf="topUpForm.get('paymentInfo').errors" class="invalid-feedback">
-                                 <div *ngIf="topUpForm.get('paymentInfo').errors.required"> phone number is required
-                                 </div>
+                                <div *ngIf="topUpForm.get('paymentInfo').errors" class="invalid-feedback">
+                                    <div *ngIf="topUpForm.get('paymentInfo').errors.required"> phone number is required
+                                    </div>
 
-                             </div>
-                         </div>
-
-
-
-
-                         <div class="col-12">
-                            <label lass="col-sm-2 col-form-label" >Networks</label>
-                            <div class="col-sm-10">
-
-
-
-                                <div class="form-check form-check-inline">
-                                    <input class="form-check-input" type="radio" name="payeeId" id="inlineRadio1" formControlName = "payeeId" value="0010010001">
-                                    <label class="form-check-label" for="inlineRadio1">Zain</label>
-                                  </div>
-                                  <div class="form-check form-check-inline">
-                                    <input class="form-check-input" type="radio" name="payeeId" id="inlineRadio2" formControlName = "payeeId" value="0010010003">
-                                    <label class="form-check-label" for="inlineRadio2">MTN</label>
-                                  </div>
-                                  <div class="form-check form-check-inline">
-                                    <input class="form-check-input" type="radio" name="payeeId" id="inlineRadio3" formControlName = "payeeId" value="0010010005" >
-                                    <label class="form-check-label" for="inlineRadio3">Sudani</label>
-                                  </div>
-
-                            </div>
-
-                          </div>
-
-
-
-
-
-
-
-
-                         <div class="form-group col-12">
-                            <label>Amount</label>
-                            <input type="number" formControlName="tranAmount" class="form-control" [ngClass]="{ 'is-invalid': topUpForm.get('tranAmount').errors && (topUpForm.get('tranAmount').touched
-                             || topUpForm.get('tranAmount').dirty)}" />
-                            <div *ngIf="topUpForm.get('tranAmount').errors" class="invalid-feedback">
-                                <div *ngIf="topUpForm.get('tranAmount').errors.required"> amount is required
                                 </div>
-                                <div
-                                    *ngIf="topUpForm.get('tranAmount').errors.min">
-                                    invalid amount </div>
                             </div>
-                        </div>
+
+
+
+
+                            <div class="col-12">
+                                <label lass="col-sm-2 col-form-label">Networks</label>
+                                <div class="col-sm-10">
+
+
+
+                                    <div class="form-check form-check-inline">
+                                        <input class="form-check-input" type="radio" name="payeeId" id="inlineRadio1"
+                                            formControlName="payeeId" value="0010010001">
+                                        <label class="form-check-label" for="inlineRadio1">Zain</label>
+                                    </div>
+                                    <div class="form-check form-check-inline">
+                                        <input class="form-check-input" type="radio" name="payeeId" id="inlineRadio2"
+                                            formControlName="payeeId" value="0010010003">
+                                        <label class="form-check-label" for="inlineRadio2">MTN</label>
+                                    </div>
+                                    <div class="form-check form-check-inline">
+                                        <input class="form-check-input" type="radio" name="payeeId" id="inlineRadio3"
+                                            formControlName="payeeId" value="0010010005">
+                                        <label class="form-check-label" for="inlineRadio3">Sudani</label>
+                                    </div>
+
+                                </div>
+
+                            </div>
+
+
+
+
+
+
+
+
+                            <div class="form-group col-12">
+                                <label>Amount</label>
+                                <input type="text" inputMode="numeric" patter="[0-9]" formControlName="tranAmount"
+                                    class="form-control" [ngClass]="{ 'is-invalid': topUpForm.get('tranAmount').errors && (topUpForm.get('tranAmount').touched
+                             || topUpForm.get('tranAmount').dirty)}" />
+                                <div *ngIf="topUpForm.get('tranAmount').errors" class="invalid-feedback">
+                                    <div *ngIf="topUpForm.get('tranAmount').errors.required"> amount is required
+                                    </div>
+                                    <div *ngIf="topUpForm.get('tranAmount').errors.min">
+                                        invalid amount </div>
+                                </div>
+                            </div>
 
 
 
@@ -131,7 +134,7 @@
                                 </div>
                             </div>
 
-                          </div>
+                        </div>
                         <div class="text-center">
                             <button class="btn btn-primary">Submit</button>
                         </div>
@@ -141,19 +144,19 @@
             </div>
         </div>
     </div>
-  </div>
+</div>
 
 
 
-  <ngx-spinner bdColor="rgba(51,51,51,0.8)" size="medium" color="#fca0a0" type="ball-clip-rotate-multiple">
+<ngx-spinner bdColor="rgba(51,51,51,0.8)" size="medium" color="#fca0a0" type="ball-clip-rotate-multiple">
 
     <p style="font-size: 20px; color: white">Loading...</p>
-  </ngx-spinner>
+</ngx-spinner>
 
 
 
 
-  <ng-template #template>
+<ng-template #template>
     <div class="modal-header">
         <h4 class="modal-title pull-left" style="color: #dc3545" *ngIf="reponsecode===502 || reponsecode===504
         ||reponsecode===500 || reponsecode===0">error</h4>
@@ -165,7 +168,7 @@
     <div class="modal-body">
 
         <div class="invalid-feedback d-block" *ngIf="reponsecode===502">
-                <h6> Transaction Time : {{error.error.details.tranDateTime}} </h6>
+            <h6> Transaction Time : {{error.error.details.tranDateTime}} </h6>
 
             <h6> responseMessage : {{error.error.details.responseMessage}} </h6>
             <h6> responseStatus : {{error.error.details.responseStatus}} </h6>
@@ -195,7 +198,7 @@
 
 
         <div class="valid-feedback d-block" *ngIf="reponsecode===200">
-                <h6> Transaction Time : {{successResponse.ebs_response.tranDateTime}} </h6>
+            <h6> Transaction Time : {{successResponse.ebs_response.tranDateTime}} </h6>
 
             <h6> PAN : {{successResponse.ebs_response.PAN}} </h6>
             <h6> tranAmount : {{successResponse.ebs_response.tranAmount}} </h6>
@@ -205,4 +208,4 @@
 
         </div>
     </div>
-  </ng-template>
+</ng-template>

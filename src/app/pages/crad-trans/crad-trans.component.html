@@ -14,13 +14,13 @@
         <div class="card">
             <div class="card-header">
                 <div class="card-body">
-                    <form [formGroup]="cardTranForm" (ngSubmit)="onSubmit()" autocomplete="on">
+                    <form [formGroup]="cardTranForm" (ngSubmit)="onSubmit()">
                         <div class="form-row">
 
                             <div class="form-group col-12">
                                 <label>Receiver Card Number</label>
-                                <input font-family="consolas" type="text" formControlName="toCard" class="form-control"
-                                    [ngClass]="{ 'is-invalid': cardTranForm.get('toCard').errors && (cardTranForm.get('toCard').touched
+                                <input autocomplete="on" font-family="consolas" type="text" formControlName="toCard"
+                                    class="form-control" [ngClass]="{ 'is-invalid': cardTranForm.get('toCard').errors && (cardTranForm.get('toCard').touched
                                || cardTranForm.get('PAN').dirty)}" />
                                 <div *ngIf="cardTranForm.get('toCard').errors" class="invalid-feedback">
                                     <div *ngIf="cardTranForm.get('toCard').errors.required">Card Number is required
@@ -34,8 +34,8 @@
                         <div class="form-row">
                             <div class="form-group col-12">
                                 <label>Sender Card Number</label>
-                                <input font-family="consolas" type="text" formControlName="PAN" class="form-control"
-                                    [ngClass]="{ 'is-invalid': cardTranForm.get('PAN').errors && (cardTranForm.get('PAN').touched
+                                <input autocomplete="on" font-family="consolas" type="text" formControlName="PAN"
+                                    class="form-control" [ngClass]="{ 'is-invalid': cardTranForm.get('PAN').errors && (cardTranForm.get('PAN').touched
                              || cardTranForm.get('PAN').dirty)}" />
                                 <div *ngIf="cardTranForm.get('PAN').errors" class="invalid-feedback">
                                     <div *ngIf="cardTranForm.get('PAN').errors.required">Card Number is required
@@ -66,7 +66,8 @@
                         <div class="form-row">
                             <div class="form-group col-12">
                                 <label>Amount</label>
-                                <input type="number" formControlName="tranAmount" class="form-control" [ngClass]="{ 'is-invalid': cardTranForm.get('tranAmount').errors && (cardTranForm.get('tranAmount').touched
+                                <input autocomplete="on" type="text" inputMode="numeric" patter="[0-9]"
+                                    formControlName="tranAmount" class="form-control" [ngClass]="{ 'is-invalid': cardTranForm.get('tranAmount').errors && (cardTranForm.get('tranAmount').touched
                            || cardTranForm.get('tranAmount').dirty)}" />
                                 <div *ngIf="cardTranForm.get('tranAmount').errors" class="invalid-feedback">
                                     <div *ngIf="cardTranForm.get('tranAmount').errors.required"> tranAmount is required
