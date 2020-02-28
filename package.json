@@ -1,5 +1,5 @@
 {
-  "name": "paper-dashboard-angular",
+  "name": "fakhri-dashboard",
   "version": "2.0.0",
   "license": "MIT",
   "scripts": {
@@ -10,7 +10,7 @@
     "lint": "ng lint",
     "e2e": "ng e2e",
     "install:clean": "rm -rf node_modules/ && rm -rf package-lock.json && npm install && npm start",
-    "postinstall": "ng build --output-path angularapp  --aot --prod"
+    "postinstall": "ng build --aot --prod"
   },
   "engines": {
     "node": "v12.13.0",
