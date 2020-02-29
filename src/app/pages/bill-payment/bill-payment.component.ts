@@ -101,6 +101,9 @@ export class BillPaymentComponent implements OnInit {
       const phone = this.topUpForm.controls["paymentInfo"].value;
       this.topUpForm.controls["paymentInfo"].setValue("MPHONE=" + phone);
 
+      let amount = parseFloat(this.topUpForm.controls["tranAmount"].value);
+      this.topUpForm.controls["tranAmount"].setValue(amount);
+
       console.log(this.topUpForm.value);
       this.noebsApiSerivce.billPaymentService(this.topUpForm.value).subscribe(
         response => {

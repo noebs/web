@@ -94,6 +94,9 @@ export class E15Component implements OnInit {
         V4uuid
       );
 
+      let amount = parseFloat(this.e15Form.controls["tranAmount"].value);
+      this.e15Form.controls["tranAmount"].setValue(amount);
+
       this.e15Form.controls["IPIN"].setValue(ipinBlock);
       this.e15Form.controls["UUID"].setValue(V4uuid);
       this.e15Form.controls["expDate"].setValue(

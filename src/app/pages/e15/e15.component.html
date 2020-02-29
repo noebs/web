@@ -90,8 +90,8 @@
 
                             <div class="form-group col-12">
                                 <label>Amount</label>
-                                <input type="text" inputMode="numeric" patter="[0-9]" formControlName="tranAmount"
-                                    class="form-control" [ngClass]="{ 'is-invalid': e15Form.get('tranAmount').errors && (e15Form.get('tranAmount').touched
+                                <input type="text" inputMode="numeric" pattern="([0-9]*[.])?[0-9]+"
+                                    formControlName="tranAmount" class="form-control" [ngClass]="{ 'is-invalid': e15Form.get('tranAmount').errors && (e15Form.get('tranAmount').touched
                              || e15Form.get('tranAmount').dirty)}" />
                                 <div *ngIf="e15Form.get('tranAmount').errors" class="invalid-feedback">
                                     <div *ngIf="e15Form.get('tranAmount').errors.required"> amount is required

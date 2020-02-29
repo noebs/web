@@ -17,6 +17,7 @@ import { NgxSpinnerService } from "ngx-spinner";
 import * as moment from "moment";
 import { IpinEncryptService } from "app/services/IpinEncrypt.Service";
 import uuidv4 from "uuid/v4";
+import { float } from "html2canvas/dist/types/css/property-descriptors/float";
 
 @Component({
   selector: "app-crad-trans",
@@ -73,12 +74,7 @@ export class CradTransComponent implements OnInit {
 
       IPIN: [
         "",
-        [
-          Validators.required,
-          Validators.minLength(4),
-          ,
-          Validators.maxLength(4)
-        ]
+        [Validators.required, Validators.minLength(4), Validators.maxLength(4)]
       ],
       applicationId: "ACTSCon",
       tranDateTime: today,
@@ -101,13 +97,19 @@ export class CradTransComponent implements OnInit {
       );
 
       console.log("base64.encode " + ipinBlock);
+      // console.log("tran amount is: ", this.cardTranForm.controls["tranAmount"].setValue(float));
       this.cardTranForm.controls["IPIN"].setValue(ipinBlock);
       this.cardTranForm.controls["UUID"].setValue(V4uuid);
       this.cardTranForm.controls["expDate"].setValue(
         this.inputDate.nativeElement.value
       );
 
+      // make the traAmount float
+
+      let amount = parseFloat(this.cardTranForm.controls["tranAmount"].value);
+      this.cardTranForm.controls["tranAmount"].setValue(amount);
       console.log(this.cardTranForm.value);
+
       this.noebsApiService.cardTcard(this.cardTranForm.value).subscribe(
         response => {
           this.spinner.hide();

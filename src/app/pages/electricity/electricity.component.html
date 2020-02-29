@@ -79,8 +79,8 @@
                         <div class="form-row">
                             <div class="form-group col-12">
                                 <label>Amount</label>
-                                <input type="text" inputMode="numeric" patter="[0-9]" formControlName="tranAmount"
-                                    class="form-control" [ngClass]="{ 'is-invalid': electriForm.get('tranAmount').errors && (electriForm.get('tranAmount').touched
+                                <input type="text" inputMode="numeric" pattern="([0-9]*[.])?[0-9]+"
+                                    formControlName="tranAmount" class="form-control" [ngClass]="{ 'is-invalid': electriForm.get('tranAmount').errors && (electriForm.get('tranAmount').touched
                            || electriForm.get('tranAmount').dirty)}" />
                                 <div *ngIf="electriForm.get('tranAmount').errors" class="invalid-feedback">
                                     <div *ngIf="electriForm.get('tranAmount').errors.required"> amount is required

@@ -93,6 +93,9 @@ export class ElectricityComponent implements OnInit {
         V4uuid
       );
 
+      let amount = parseFloat(this.electriForm.controls["tranAmount"].value);
+      this.electriForm.controls["tranAmount"].setValue(amount);
+
       this.electriForm.controls["IPIN"].setValue(ipinBlock);
       this.electriForm.controls["UUID"].setValue(V4uuid);
       this.electriForm.controls["expDate"].setValue(

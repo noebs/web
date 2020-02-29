@@ -94,6 +94,9 @@ export class CustomsComponent implements OnInit {
         V4uuid
       );
 
+      let amount = parseFloat(this.customsForm.controls["tranAmount"].value);
+      this.customsForm.controls["tranAmount"].setValue(amount);
+
       this.customsForm.controls["IPIN"].setValue(ipinBlock);
       this.customsForm.controls["UUID"].setValue(V4uuid);
       this.customsForm.controls["expDate"].setValue(
