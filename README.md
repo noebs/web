@@ -8,10 +8,7 @@
 - Run in terminal: `npm install -g @angular/cli`
 - Then: `npm install`
 - And: ng serve
-- Navigate to: http://localhost:4200/dashboard and   http://localhost:4200/dashboard/balance-inquiry 
+- Navigate to: http://localhost:4200/dashboard and http://localhost:4200/dashboard/balance-inquiry 
 
-
-# Deployment with Heroku
-
-# Deployment with nginx
+We use vercel cloud functions to prove json api for google's domain verification and url handling.
 
