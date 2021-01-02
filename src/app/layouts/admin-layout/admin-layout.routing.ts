@@ -31,5 +31,5 @@ export const AdminLayoutRoutes: Routes = [
   { path: "e15", component: E15Component },
   { path: "customs", component: CustomsComponent },
   { path: "ipin", component: IpinComponent },
-  { path: "history", component: LocalTransactions }
+  { path: "history", component: LocalTransactions },
 ];

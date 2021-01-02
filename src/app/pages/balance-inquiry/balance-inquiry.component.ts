@@ -49,7 +49,7 @@ export class BalanceInquiryComponent implements OnInit {
     private modalService: BsModalService,
     private ipinEnc: IpinEncryptService,
     private noebsApiService: NoebsApiService
-  ) {}
+  ) { }
 
   ngOnInit() {
     let today = moment().format("YYMMDDhhmmss");
