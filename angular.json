@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "pd-free-angularcli": {
+    "cashq-web": {
       "root": "",
       "sourceRoot": "src",
       "projectType": "application",

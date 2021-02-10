@@ -1,6 +1,6 @@
 {
     "routes": [{
-        "src": "/.well-known.json",
+        "src": ".well-known/assetlinks.json",
         "dest": "api/test.go"
     }]
 }

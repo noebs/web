@@ -30,10 +30,20 @@ func AndroidHandler(w http.ResponseWriter, r *http.Request) {
 }
 
 /*
+
+[{
+  "relation": ["delegate_permission/common.handle_all_urls"],
+  "target": {
+    "namespace": "android_app",
+    "package_name": "net.soluspay.cashq",
+    "sha256_cert_fingerprints":
+    ["E9:AF:9B:B2:7C:B7:51:C1:BB:A3:65:B4:35:57:FF:6C:33:D7:7F:91:71:9B:85:73:4B:78:7F:54:1B:59:D8:24"]
+  }
+}]
+
 [{"relation":["delegate_permission/common.handle_all_urls"],
 "target":{"namespace":"android_app","package_name":"net.soluspay.cashq",
-"sha256_cert_fingerprints":["E9:AF:9B:B2:7C:B7:51:C1:BB:A3:65:B4:35:57:FF:6C:33:
-D7:7F:91:71:9B:85:73:4B:78:7F:54:1B:59:D8:24"]}}]
+"sha256_cert_fingerprints":["E9:AF:9B:B2:7C:B7:51:C1:BB:A3:65:B4:35:57:FF:6C:33:D7:7F:91:71:9B:85:73:4B:78:7F:54:1B:59:D8:24"]}}]
 
 [{"relation":["delegate_permission/common.handle_all_urls"],
 "target":{"namespace":"android_app","package_name":"net.soluspay.cashq",
