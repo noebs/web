@@ -65,5 +65,5 @@ type relation struct {
 type Target struct {
 	Namespace              string   `json:"namespace,omitempty"`
 	AndroidApp             string   `json:"package_name,omitempty"`
-	Sha256CertFingerprints []string `json:"sha_256_cert_fingerprints,omitempty"`
+	Sha256CertFingerprints []string `json:"sha256_cert_fingerprints,omitempty"`
 }

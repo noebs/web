@@ -1,6 +1,19 @@
 {
-    "routes": [{
+    "routes": [
+        {
         "src": ".well-known/assetlinks.json",
-        "dest": "api/test.go"
-    }]
+        "dest": "/api/test"
+    }, 
+    {
+        "src": "/.well-known/assetlinks.json",
+        "dest": "/api/test"
+    },
+    {
+        "src": "/fff",
+        "dest": "/api/test"
+    }
+
+
+
+]
 }
