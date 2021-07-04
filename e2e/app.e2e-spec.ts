@@ -1,14 +1,14 @@
-import { PdFreeAngularcliPage } from './app.po';
+import { CashqWebPage } from "./app.po";
 
-describe('pd-free-angularcli App', () => {
-  let page: PdFreeAngularcliPage;
+describe("cashq-web App", () => {
+  let page: CashqWebPage;
 
   beforeEach(() => {
-    page = new PdFreeAngularcliPage();
+    page = new CashqWebPage();
   });
 
-  it('should display welcome message', () => {
+  it("should display welcome message", () => {
     page.navigateTo();
-    expect(page.getParagraphText()).toEqual('Welcome to app!!');
+    expect(page.getParagraphText()).toEqual("Welcome to app!!");
   });
 });
