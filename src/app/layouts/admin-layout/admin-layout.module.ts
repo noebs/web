@@ -29,6 +29,7 @@ import { E15Component } from "app/pages/e15/e15.component";
 import { CustomsComponent } from "app/pages/customs/customs.component";
 import { IpinComponent } from "app/pages/ipin/ipin.component";
 import { LocalTransactions } from "app/pages/local-transactions/local-transactions.component";
+import { ServiceWidgetComponent } from 'app/ui/service-widget/service-widget.component';
 
 @NgModule({
   imports: [
@@ -50,6 +51,7 @@ import { LocalTransactions } from "app/pages/local-transactions/local-transactio
     TopUpComponent,
     BillInquiryComponent,
     BillPaymentComponent,
+    ServiceWidgetComponent,
     MoheComponent,
     MoheArabComponent,
     E15Component,
@@ -64,4 +66,4 @@ import { LocalTransactions } from "app/pages/local-transactions/local-transactio
     { provide: ErrorHandler, useClass: GlobalErrorHandler }
   ]
 })
-export class AdminLayoutModule {}
+export class AdminLayoutModule { }
