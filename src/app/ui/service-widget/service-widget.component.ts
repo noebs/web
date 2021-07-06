@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input, OnInit, PACKAGE_ROOT_URL } from '@angular/core';
 import { Service } from '../../../custom-typings';
 @Component({
   selector: 'app-service-widget',
@@ -13,4 +13,5 @@ export class ServiceWidgetComponent implements OnInit {
   }
 
   @Input() service: Service
+  @Input() iconStyle: string
 }

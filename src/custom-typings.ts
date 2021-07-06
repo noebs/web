@@ -2,5 +2,6 @@
 export interface Service {
     title: string
     url: string
-    desciption: string
+    description: string,
+    iconStyle?: string
 }
