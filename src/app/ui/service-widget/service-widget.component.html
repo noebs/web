@@ -1,0 +1,27 @@
+<div class="">
+    <a [routerLink]="service.url" class="card-block clearfix" style="text-decoration: none;">
+        <div class="card card-stats animated zoomIn">
+            <div class="card-body ">
+                <div class="row">
+                    <div class="col-5 col-md-4">
+                        <div class="icon-big text-center icon-warning">
+                            <i [class]="iconStyle"></i>
+                        </div>
+                    </div>
+                    <div class="col-7 col-md-8">
+                        <div class="numbers">
+                            <p class="card-title">{{service.title}}
+                                <p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="card-footer ">
+                <hr>
+                <div class="stats">
+                    {{service.description}}
+                </div>
+            </div>
+        </div>
+    </a>
+</div>

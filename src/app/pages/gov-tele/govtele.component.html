@@ -1,284 +1,36 @@
 <div class="row">
-
   <div class="col-sm-12">
-
     <span class="h5"> Telecom Services </span>
   </div>
 </div>
-
 <hr>
 
 <div class="row">
-  <div class="col-lg-4 col-md-6 col-sm-12">
-    <a [routerLink]="['/bill-inq']" class="card-block clearfix" style="text-decoration: none;">
-
-      <div class="card card-stats  animated zoomIn">
-        <div class="card-body ">
-          <div class="row">
-            <div class="col-5 col-md-4">
-              <div class="icon-big text-center icon-warning">
-                <i class="nc-icon nc-money-coins"></i>
-              </div>
-            </div>
-            <div class="col-7 col-md-8">
-              <div class="numbers">
-                <p class="card-title">Bill Inquiry
-                  <p>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="card-footer ">
-          <hr>
-          <div class="stats">
-            check your bill
-          </div>
-        </div>
-      </div>
-    </a>
-  </div>
-  <div class="col-lg-4 col-md-6 col-sm-12">
-    <a [routerLink]="['/bill-pay']" class="card-block clearfix" style="text-decoration: none;">
-
-      <div class="card card-stats  animated zoomIn">
-        <div class="card-body ">
-          <div class="row">
-            <div class="col-5 col-md-4">
-              <div class="icon-big text-center icon-warning">
-                <i class="nc-icon nc-paper text-warning"></i>
-              </div>
-            </div>
-            <div class="col-7 col-md-8">
-              <div class="numbers">
-
-                <p class="card-title">Bill Payment
-                  <p>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="card-footer ">
-          <hr>
-          <div class="stats">
-            pay your bill
-          </div>
-        </div>
-      </div>
-    </a>
-  </div>
-  <div class="col-lg-4 col-md-12 col-sm-12">
-    <a [routerLink]="['/topUp']" class="card-block clearfix" style="text-decoration: none;">
-      <div class="card card-stats  animated zoomIn">
-        <div class="card-body ">
-          <div class="row">
-            <div class="col-5 col-md-4">
-              <div class="icon-big text-center icon-warning">
-                <i class="nc-icon nc-share-66"></i>
-              </div>
-            </div>
-            <div class="col-7 col-md-8">
-              <div class="numbers">
-                <p class="card-title">Top Up
-                  <p>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="card-footer">
-          <hr>
-          <div class="stats">
-            charge your phone
-          </div>
-        </div>
-      </div>
-    </a>
-  </div>
-
-
-
-
+  <app-service-widget *ngFor="let service of telecomServices" [service]="service" [iconStyle]="service.iconStyle"
+    class="col-lg-4 col-md-6 col-sm-12">
+  </app-service-widget>
 </div>
 
-
-
-
-
-
 <div class="row">
-
   <div class="col-sm-12">
-
     <span class="h5"> Education Services </span>
   </div>
 </div>
-
 <hr>
 
 <div class="row">
-
-  <div class="col-md-6 col-sm-12">
-    <a [routerLink]="['/mohe-arab']" class="card-block clearfix" style="text-decoration: none;">
-
-      <div class="card card-stats  animated zoomIn">
-        <div class="card-body ">
-          <div class="row">
-            <div class="col-5 col-md-4">
-              <div class="icon-big text-center icon-warning">
-                <i class="nc-icon nc-hat-3"></i>
-              </div>
-            </div>
-            <div class="col-7 col-md-8">
-              <div class="numbers">
-                <p class="card-category">arab</p>
-                <p class="card-title">Hight Education
-                  <p>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="card-footer ">
-          <hr>
-          <div class="stats">
-            pay your Educational fee
-          </div>
-        </div>
-
-      </div>
-    </a>
-  </div>
-  <div class="col-md-6 col-sm-12">
-    <a [routerLink]="['/mohe']" class="card-block clearfix" style="text-decoration: none;">
-
-      <div class="card card-stats  animated zoomIn">
-        <div class="card-body ">
-          <div class="row">
-            <div class="col-5 col-md-4">
-              <div class="icon-big text-center icon-warning">
-                <i class="nc-icon nc-hat-3 text-success"></i>
-              </div>
-            </div>
-            <div class="col-7 col-md-8">
-              <div class="numbers">
-                <p class="card-category">sudanese</p>
-                <p class="card-title">Hight Education
-                  <p>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="card-footer ">
-          <hr>
-          <div class="stats">
-            pay your Educational fee
-          </div>
-        </div>
-      </div>
-    </a>
-  </div>
-
+  <app-service-widget *ngFor="let service of eduServices" [service]="service" [iconStyle]="service.iconStyle"
+    class="col-md-6 col-sm-12"></app-service-widget>
 </div>
-
-
-
-
-
-
 <div class="row">
-
   <div class="col-sm-12">
-
     <span class="h5"> Goverment Services </span>
   </div>
 </div>
-
 <hr>
 
 <div class="row">
-  <!--Last transactions view-->
-  <div class="col-md-6 col-sm-12">
-    <a [routerLink]="['/history']" class="card-block clearfix" style="text-decoration: none;">
-      <div class="card card-stats  animated zoomIn">
-        <div class="card-body ">
-          <div class="row">
-            <div class="col-5 col-md-4">
-              <div class="icon-big text-center icon-warning">
-                <i class="nc-icon nc-paper"></i>
-              </div>
-            </div>
-            <div class="col-7 col-md-8">
-              <div class="numbers">
-                <p class="card-title">Previous Transactions
-                  <p>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="card-footer ">
-          <hr>
-          <div class="stats">
-            View your previous transactions
-          </div>
-        </div>
-      </div>
-    </a>
-  </div>
-
-  <!--Customs view-->
-  <div class="col-md-6 col-sm-12">
-    <a [routerLink]="['/customs']" class="card-block clearfix" style="text-decoration: none;">
-      <div class="card card-stats  animated zoomIn">
-        <div class="card-body ">
-          <div class="row">
-            <div class="col-5 col-md-4">
-              <div class="icon-big text-center icon-warning">
-                <i class="nc-icon nc-delivery-fast"></i>
-              </div>
-            </div>
-            <div class="col-7 col-md-8">
-              <div class="numbers">
-                <p class="card-title">Customs
-                  <p>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="card-footer ">
-          <hr>
-          <div class="stats">
-            inquery , payment
-          </div>
-        </div>
-      </div>
-    </a>
-  </div>
-  <div class="col-md-6 col-sm-12">
-    <a [routerLink]="['/e15']" class="card-block clearfix" style="text-decoration: none;">
-
-      <div class="card card-stats  animated zoomIn">
-        <div class="card-body ">
-          <div class="row">
-            <div class="col-5 col-md-4">
-              <div class="icon-big text-center icon-warning">
-                <i class="nc-icon nc-single-copy-04 text-warning"></i>
-              </div>
-            </div>
-            <div class="col-7 col-md-8">
-              <div class="numbers">
-
-                <p class="card-title">E-15
-                  <p>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="card-footer ">
-          <hr>
-          <div class="stats">
-            inquery , payment
-          </div>
-        </div>
-      </div>
-    </a>
-  </div>
-
+  <app-service-widget *ngFor="let service of govServices" [service]="service" [iconStyle]="service.iconStyle"
+    class="col-md-6 col-sm-12">
+  </app-service-widget>
 </div>
