@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { TransactionsLogger } from 'app/services/transactions-logger.service';
 
 @Component({
   selector: 'app-mohe',
@@ -7,7 +8,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class MoheComponent implements OnInit {
 
-  constructor() { }
+  constructor(private transLogger: TransactionsLogger) { }
 
   ngOnInit() {
   }
