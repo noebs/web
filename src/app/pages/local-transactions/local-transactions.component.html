@@ -26,7 +26,7 @@
                                 <th>Status</th>
                                 <th>Transaction ID</th>
                             </tr>
-                            <tr *ngFor="let transaction of getStorage">
+                            <tr *ngFor="let transaction of previousTransactions">
                                 <td>{{ transaction.tranDateTime}}</td>
                                 <td>{{ transaction.responseStatus}}</td>
                                 <td>{{ transaction.responseStatus}}</td>
