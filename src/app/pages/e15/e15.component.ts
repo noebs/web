@@ -17,6 +17,7 @@ import { NgxSpinnerService } from "ngx-spinner";
 import * as moment from "moment";
 import { IpinEncryptService } from "app/services/IpinEncrypt.Service";
 import uuidv4 from "uuid/v4";
+import { TransactionsLogger } from 'app/services/transactions-logger.service';
 
 @Component({
   selector: "app-e15",
@@ -41,12 +42,13 @@ export class E15Component implements OnInit {
   };
 
   constructor(
+    private transLogger: TransactionsLogger,
     private formBuilder: FormBuilder,
     private spinner: NgxSpinnerService,
     private modalService: BsModalService,
     private ipinEnc: IpinEncryptService,
     private noebsApiSerivce: NoebsApiService
-  ) {}
+  ) { }
 
   ngOnInit() {
     let today = moment().format("YYMMDDhhmmss");
@@ -104,8 +106,8 @@ export class E15Component implements OnInit {
       );
       this.e15Form.controls["paymentInfo"].setValue(
         this.e15Form.controls["paymentInfo"].value +
-          "/" +
-          this.e15Form.controls["declarantCode"].value
+        "/" +
+        this.e15Form.controls["declarantCode"].value
       );
 
       console.log(this.e15Form.value);
@@ -114,9 +116,7 @@ export class E15Component implements OnInit {
           this.spinner.hide();
           this.successResponse = response;
 
-          let id = Date.now();
-          let jsonResponse = JSON.stringify(response.ebs_response);
-          localStorage.setItem(id.toString(), jsonResponse);
+          this.transLogger.add('E-15', response.ebs_response)
 
           this.reponsecode = 200;
           console.log(response);
@@ -128,10 +128,8 @@ export class E15Component implements OnInit {
         err => {
           this.spinner.hide();
           this.reponsecode = err.status;
-          let id = Date.now();
-          let jsonResponse = JSON.stringify(err.error.details);
-          console.log("the localStorage is: ", jsonResponse);
-          localStorage.setItem(id.toString(), jsonResponse);
+
+          this.transLogger.add('E-15', err.error.details)
 
           console.log(err);
           if (err instanceof HttpErrorResponse) {
