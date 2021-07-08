@@ -17,6 +17,7 @@ import { NgxSpinnerService } from "ngx-spinner";
 import * as moment from "moment";
 import { IpinEncryptService } from "app/services/IpinEncrypt.Service";
 import uuidv4 from "uuid/v4";
+import { TransactionsLogger } from 'app/services/transactions-logger.service';
 
 @Component({
   selector: "app-customs",
@@ -41,12 +42,13 @@ export class CustomsComponent implements OnInit {
   };
 
   constructor(
+    private transLogger: TransactionsLogger,
     private formBuilder: FormBuilder,
     private spinner: NgxSpinnerService,
     private modalService: BsModalService,
     private ipinEnc: IpinEncryptService,
     private noebsApiSerivce: NoebsApiService
-  ) {}
+  ) { }
 
   ngOnInit() {
     let today = moment().format("YYMMDDhhmmss");
@@ -104,8 +106,8 @@ export class CustomsComponent implements OnInit {
       );
       this.customsForm.controls["paymentInfo"].setValue(
         this.customsForm.controls["paymentInfo"].value +
-          "/" +
-          this.customsForm.controls["invoiceNumber"].value
+        "/" +
+        this.customsForm.controls["invoiceNumber"].value
       );
 
       console.log(this.customsForm.value);
@@ -113,11 +115,9 @@ export class CustomsComponent implements OnInit {
         response => {
           this.spinner.hide();
           this.successResponse = response;
-          let id = Date.now();
-          let jsonResponse = JSON.stringify(response.ebs_response);
-          localStorage.setItem(id.toString(), jsonResponse);
-
           this.reponsecode = 200;
+
+          this.transLogger.add("CUSTOMS", response.ebs_response)
           console.log(response);
           this.modalRef = this.modalService.show(
             this.template,
@@ -127,10 +127,7 @@ export class CustomsComponent implements OnInit {
         err => {
           this.spinner.hide();
           this.reponsecode = err.status;
-          let id = Date.now();
-          let jsonResponse = JSON.stringify(err.error.details);
-          console.log("the localStorage is: ", jsonResponse);
-          localStorage.setItem(id.toString(), jsonResponse);
+          this.transLogger.add("CUSTOMS", err.error.details)
           console.log(err);
           if (err instanceof HttpErrorResponse) {
             this.modalRef = this.modalService.show(
