@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { TransactionsLogger } from 'app/services/transactions-logger.service';
 
 @Component({
   selector: 'app-ipin',
@@ -7,7 +8,9 @@ import { Component, OnInit } from '@angular/core';
 })
 export class IpinComponent implements OnInit {
 
-  constructor() { }
+  constructor(
+    private transLogger: TransactionsLogger
+  ) { }
 
   ngOnInit() {
   }

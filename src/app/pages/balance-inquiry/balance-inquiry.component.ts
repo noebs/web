@@ -20,6 +20,7 @@ import uuidv4 from "uuid/v4";
 import * as jspdf from "jspdf";
 import html2canvas from "html2canvas";
 import { stringify } from "querystring";
+import { TransactionsLogger } from 'app/services/transactions-logger.service';
 
 @Component({
   selector: "app-balance-inquiry",
@@ -44,6 +45,7 @@ export class BalanceInquiryComponent implements OnInit {
   };
 
   constructor(
+    private transLogger: TransactionsLogger,
     private formBuilder: FormBuilder,
     private spinner: NgxSpinnerService,
     private modalService: BsModalService,
@@ -108,9 +110,7 @@ export class BalanceInquiryComponent implements OnInit {
             this.spinner.hide();
             this.successResponse = response;
             this.reponsecode = 200; // why hardcoding this
-            let id = Date.now();
-            let jsonResponse = JSON.stringify(response.ebs_response)
-            localStorage.setItem(id.toString(), jsonResponse);
+            this.transLogger.add('BALANCE_INQUIRY', response.ebs_response)
 
             console.log("the response object when stringified is: ", response);
             this.modalRef = this.modalService.show(
@@ -122,11 +122,7 @@ export class BalanceInquiryComponent implements OnInit {
             this.spinner.hide();
             this.reponsecode = err.status;
             console.log("the response object when stringified is: ", err);
-            // save to localStorage
-            let id = Date.now();
-            let jsonResponse = JSON.stringify(err.error.details)
-            console.log("the localStorage is: ", jsonResponse)
-            localStorage.setItem(id.toString(), jsonResponse);
+            this.transLogger.add('BALANCE_INQUIRY', err.error.details)
 
             console.log("the response object when stringified is: ", err.error);
             //

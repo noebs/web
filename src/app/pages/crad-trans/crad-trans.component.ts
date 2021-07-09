@@ -18,6 +18,7 @@ import * as moment from "moment";
 import { IpinEncryptService } from "app/services/IpinEncrypt.Service";
 import uuidv4 from "uuid/v4";
 import { float } from "html2canvas/dist/types/css/property-descriptors/float";
+import { TransactionsLogger } from 'app/services/transactions-logger.service';
 
 @Component({
   selector: "app-crad-trans",
@@ -42,12 +43,13 @@ export class CradTransComponent implements OnInit {
   };
 
   constructor(
+    private transLogger: TransactionsLogger,
     private formBuilder: FormBuilder,
     private spinner: NgxSpinnerService,
     private modalService: BsModalService,
     private ipinEnc: IpinEncryptService,
     private noebsApiService: NoebsApiService
-  ) {}
+  ) { }
 
   ngOnInit() {
     let today = moment().format("YYMMDDhhmmss");
@@ -114,9 +116,7 @@ export class CradTransComponent implements OnInit {
         response => {
           this.spinner.hide();
           this.successResponse = response;
-          let id = Date.now();
-          let jsonResponse = JSON.stringify(response.ebs_response);
-          localStorage.setItem(id.toString(), jsonResponse);
+          this.transLogger.add('CARD_TO_CARD', response.ebs_response)
 
           this.reponsecode = 200;
           console.log(response);
@@ -128,11 +128,7 @@ export class CradTransComponent implements OnInit {
         err => {
           this.spinner.hide();
           this.reponsecode = err.status;
-          let id = Date.now();
-          let jsonResponse = JSON.stringify(err.error.details);
-          console.log("the localStorage is: ", jsonResponse);
-          localStorage.setItem(id.toString(), jsonResponse);
-
+          this.transLogger.add('CARD_TO_CARD', err.error.details)
           console.log(err);
           if (err instanceof HttpErrorResponse) {
             this.modalRef = this.modalService.show(

@@ -2,6 +2,7 @@ import { Component, OnInit, Type } from "@angular/core";
 import { TypeScriptEmitter } from "@angular/compiler";
 
 import * as fileSaver from "file-saver";
+import { TransactionsLogger } from 'app/services/transactions-logger.service';
 
 @Component({
   selector: "local-transactions",
@@ -9,29 +10,16 @@ import * as fileSaver from "file-saver";
   styleUrls: ["./local-transactions.component.scss"]
 })
 export class LocalTransactions implements OnInit {
-  constructor() {}
-
-  // how to pass data from angular ts file to its view
-  ngOnInit() {}
-
-  get getStorage(): Array<JSON> {
-    let keys = Object.keys(localStorage);
-    let v = [];
-    keys.forEach(key => {
-      if (!key.startsWith("pub")) {
-        try {
-          var res = JSON.parse(localStorage.getItem(key));
-          v.push(res);
-        } catch (e) {
-          console.log("there's an error in json", e);
-        }
-      }
-    });
-    return v;
+  previousTransactions = []
+  constructor(private transactionLogger: TransactionsLogger) {
+    this.previousTransactions = this.transactionLogger.all()
   }
 
+  // how to pass data from angular ts file to its view
+  ngOnInit() { }
+
   public downloadCSV() {
-    let data = this.getStorage;
+    let data = this.previousTransactions;
 
     const replacer = (key, value) => (value === null ? "" : value); // specify how you want to handle null values here
     const header = Object.keys(data[0]);
