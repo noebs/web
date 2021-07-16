@@ -31,7 +31,6 @@
             ],
             "styles": [
               "node_modules/bootstrap/scss/bootstrap.scss",
-              "https://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css",
               "src/scss/paper-dashboard.scss",
               "node_modules/ngx-toastr/toastr.css",
               "node_modules/animate.css/animate.min.css",
