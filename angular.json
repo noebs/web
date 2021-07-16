@@ -19,11 +19,20 @@
             "assets": [
               "src/assets",
               "src/favicon.ico",
-              "src/manifest.webmanifest"
+              "src/manifest.webmanifest",
+              {
+                "glob": "**/*",
+                "input": "src/assets/",
+                "ignore": [
+                  "**/*.scss"
+                ],
+                "output": "/assets/"
+              }
             ],
             "styles": [
               "node_modules/bootstrap/scss/bootstrap.scss",
-              "src/assets/scss/paper-dashboard.scss",
+              "https://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css",
+              "src/scss/paper-dashboard.scss",
               "node_modules/ngx-toastr/toastr.css",
               "node_modules/animate.css/animate.min.css",
               "node_modules/ngx-bootstrap/datepicker/bs-datepicker.css",
@@ -35,7 +44,14 @@
           },
           "configurations": {
             "production": {
-              "optimization": true,
+              "optimization": {
+                "scripts": true,
+                "styles": {
+                  "minify": true,
+                  "inlineCritical": false
+                },
+                "fonts": true
+              },
               "outputHashing": "all",
               "sourceMap": false,
               "extractCss": true,
@@ -86,12 +102,17 @@
             ],
             "styles": [
               "src/styles.css",
-              "src/assets/sass/paper-dashboard.scss"
+              "src/sass/paper-dashboard.scss"
             ],
             "assets": [
               "src/assets",
               "src/favicon.ico",
-              "src/manifest.webmanifest"
+              "src/manifest.webmanifest",
+              {
+                "ignore": [
+                  "**/*.scss"
+                ]
+              }
             ]
           }
         },
@@ -135,7 +156,7 @@
   "schematics": {
     "@schematics/angular:component": {
       "prefix": "app",
-      "styleext": "scss"
+      "style": "scss"
     },
     "@schematics/angular:directive": {
       "prefix": "app"
