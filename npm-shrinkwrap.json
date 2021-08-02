@@ -41,7 +41,7 @@
         "jspdf": "^1.5.3",
         "moment": "2.24.0",
         "ng-animate": "^0.3.4",
-        "ngx-bootstrap": "^5.6.2",
+        "ngx-bootstrap": "^6.2.0",
         "ngx-spinner": "^8.1.0",
         "ngx-toastr": "14.0.0",
         "path": "^0.12.7",
@@ -9997,9 +9997,9 @@
       }
     },
     "node_modules/ngx-bootstrap": {
-      "version": "5.6.2",
-      "resolved": "https://registry.npmjs.org/ngx-bootstrap/-/ngx-bootstrap-5.6.2.tgz",
-      "integrity": "sha512-6YHXtdXkGH3w0NQoaUgNYAcrj064Lv5RTO284ha/hvpNTrh55yQz2cVh0VvwBk3MjyY2tdmLH4SuCJDszYdYiw==",
+      "version": "6.2.0",
+      "resolved": "https://registry.npmjs.org/ngx-bootstrap/-/ngx-bootstrap-6.2.0.tgz",
+      "integrity": "sha512-5WKHo6/ltkenw4UyXZwED8rODCgp2RGbWurzYzZsF/gH1JO5SN7TJ+AL6kXYk6XM42sDA2WhN9Db+ZPNjiyHnA==",
       "peerDependencies": {
         "@angular/common": ">=7.0.0",
         "@angular/core": ">=7.0.0"
@@ -10018,18 +10018,22 @@
       }
     },
     "node_modules/ngx-toastr": {
-      "version": "10.0.4",
-      "resolved": "https://registry.npmjs.org/ngx-toastr/-/ngx-toastr-10.0.4.tgz",
-      "integrity": "sha512-iN+zr2Msae5wV334c1dytRhSYNdUz467jwv1NE91lMmllsMkpUzZlu8VdFCeTFt+/R4TWzz19xBRqhpp+OAuVA==",
+      "version": "14.0.0",
+      "resolved": "https://registry.npmjs.org/ngx-toastr/-/ngx-toastr-14.0.0.tgz",
+      "integrity": "sha512-dnDzSY73pF6FvNyxdh6ftfvXvUg6SU7MAT3orPUCzA77t3ZcFslro06zk4NCA2g67RF7dBwM0OJ/y0SN6fdGYw==",
       "dependencies": {
-        "tslib": "^1.9.0"
+        "tslib": "^2.1.0"
       },
       "peerDependencies": {
-        "@angular/common": ">=6.0.0 <9.0.0",
-        "@angular/core": ">=6.0.0 <9.0.0",
-        "@angular/platform-browser": ">=6.0.0 <9.0.0",
-        "rxjs": "^6.1.0"
+        "@angular/common": ">=12.0.0-0",
+        "@angular/core": ">=12.0.0-0",
+        "@angular/platform-browser": ">=12.0.0-0"
       }
+    },
+    "node_modules/ngx-toastr/node_modules/tslib": {
+      "version": "2.3.0",
+      "resolved": "https://registry.npmjs.org/tslib/-/tslib-2.3.0.tgz",
+      "integrity": "sha512-N82ooyxVNm6h1riLCoyS9e3fuJ3AMG2zIZs2Gd1ATcSFjSA23Q0fzjjZeh0jbJvWVDZ0cJT8yaNNaaXHzueNjg=="
     },
     "node_modules/nice-try": {
       "version": "1.0.5",
@@ -25490,9 +25494,9 @@
       }
     },
     "ngx-bootstrap": {
-      "version": "5.6.2",
-      "resolved": "https://registry.npmjs.org/ngx-bootstrap/-/ngx-bootstrap-5.6.2.tgz",
-      "integrity": "sha512-6YHXtdXkGH3w0NQoaUgNYAcrj064Lv5RTO284ha/hvpNTrh55yQz2cVh0VvwBk3MjyY2tdmLH4SuCJDszYdYiw==",
+      "version": "6.2.0",
+      "resolved": "https://registry.npmjs.org/ngx-bootstrap/-/ngx-bootstrap-6.2.0.tgz",
+      "integrity": "sha512-5WKHo6/ltkenw4UyXZwED8rODCgp2RGbWurzYzZsF/gH1JO5SN7TJ+AL6kXYk6XM42sDA2WhN9Db+ZPNjiyHnA==",
       "requires": {}
     },
     "ngx-spinner": {
@@ -25504,10 +25508,18 @@
       }
     },
     "ngx-toastr": {
-      "version": "https://registry.npmjs.org/ngx-toastr/-/ngx-toastr-10.0.4.tgz",
-      "integrity": "sha512-iN+zr2Msae5wV334c1dytRhSYNdUz467jwv1NE91lMmllsMkpUzZlu8VdFCeTFt+/R4TWzz19xBRqhpp+OAuVA==",
+      "version": "14.0.0",
+      "resolved": "https://registry.npmjs.org/ngx-toastr/-/ngx-toastr-14.0.0.tgz",
+      "integrity": "sha512-dnDzSY73pF6FvNyxdh6ftfvXvUg6SU7MAT3orPUCzA77t3ZcFslro06zk4NCA2g67RF7dBwM0OJ/y0SN6fdGYw==",
       "requires": {
-        "tslib": "^1.9.0"
+        "tslib": "^2.1.0"
+      },
+      "dependencies": {
+        "tslib": {
+          "version": "2.3.0",
+          "resolved": "https://registry.npmjs.org/tslib/-/tslib-2.3.0.tgz",
+          "integrity": "sha512-N82ooyxVNm6h1riLCoyS9e3fuJ3AMG2zIZs2Gd1ATcSFjSA23Q0fzjjZeh0jbJvWVDZ0cJT8yaNNaaXHzueNjg=="
+        }
       }
     },
     "nice-try": {
