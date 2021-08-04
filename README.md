@@ -2,10 +2,10 @@
 
 # Deployment Guides
 
-- Install NodeJs. Required version 'v12.13.0'
+- Install NodeJs.
 - Open Terminal
 - Go to your file project
-- Run in terminal: `npm install -g @angular/cli@8.0.4`
+- Run in terminal: `npm install -g @angular/cli`
 - Then: `npm install`
 - And: ng serve
 - Navigate to: http://localhost:4200/dashboard and http://localhost:4200/dashboard/balance-inquiry
